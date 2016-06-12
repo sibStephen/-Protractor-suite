@@ -1,0 +1,80 @@
+<html><head><meta charset="utf-8"><style>body { font-family: Arial; }ul { list-style-position: inside; }span.passed { padding: 0 1em; color: green; }span.failed { padding: 0 1em; color: red; }span.pending { padding: 0 1em; color: orange; }span.stacktrace { white-space: pre; border: 1px solid rgb(0, 0, 0); font-size: 9pt; padding: 4px; background-color: rgb(204, 204, 204); }</style><script type="text/javascript">function showhide(id) {var e = document.getElementById(id);e.style.display = (e.style.display == "block") ? "none" : "block";}function buildQuickLinks() {var failedSpecs = document.querySelectorAll("li.failed");var quickLinksContainer = document.getElementById("quickLinks");for (var i = 0; i < failedSpecs.length; ++i) {var li = document.createElement("li");var a = document.createElement("a");a.href = "#" + failedSpecs[i].id;a.textContent = failedSpecs[i].dataset.name + "  (" + failedSpecs[i].dataset.browser + ")";li.appendChild(a);quickLinksContainer.appendChild(li);}}function updatePassCount() {var totalPassed = document.querySelectorAll("li.passed").length;var totalFailed = document.querySelectorAll("li.failed").length;var totalSpecs = totalFailed + totalPassed;console.log("passed: %s, failed: %s, total: %s", totalPassed, totalFailed, totalSpecs);document.getElementById("summaryTotalSpecs").textContent = document.getElementById("summaryTotalSpecs").textContent + totalSpecs;document.getElementById("summaryTotalFailed").textContent = document.getElementById("summaryTotalFailed").textContent + totalFailed;if (totalFailed) {document.getElementById("summary").className = "failed";}}function start() {updatePassCount();buildQuickLinks();}window.onload = start;</script></head><body><h1>Report</h1><div id="summary" class="passed"><h4>Summary</h4><ul><li id="summaryTotalSpecs">Total specs tested: </li><li id="summaryTotalFailed">Total failed: </li></ul></div><ul style="list-style-type:none"><h4>BEST Application (55 s)</h4><li id="84eb01e0-2401-11e6-ac65-4f8640a62eb4" class="passed" data-spec="spec0" data-name="should render login page" data-browser="chrome"><span class="passed">&#10003;</span><a href="469a58ad41780a91345cbb588d5933f4.png">should render login page</a>(8 s)</li><li id="84eb5000-2401-11e6-ac65-4f8640a62eb4" class="passed" data-spec="spec1" data-name="should sign in" data-browser="chrome"><span class="passed">&#10003;</span><a href="0b37c588909de8ecb8f178e40bd0eaaf.png">should sign in</a>(31 s)</li><li id="84eb7710-2401-11e6-ac65-4f8640a62eb4" class="failed" data-spec="spec2" data-name="Should Fill Audit Information" data-browser="chrome"><span class="failed">&#10007;</span><a href="ca4e6fb7f7773643915dded17f956618.png">Should Fill Audit Information</a>(0.962 s)<ul><li>Failed: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[name=&quot;title&quot;]&quot;}
+  (Session info: chrome=50.0.2661.102)
+  (Driver info: chromedriver=2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4),platform=Mac OS X 10.11.2 x86_64) [<a href="javascript:showhide('spec20')">stack</a>]<br/><span style="display: none" id="spec20" class="stacktrace">NoSuchElementError: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[name=&quot;title&quot;]&quot;}
+  (Session info: chrome=50.0.2661.102)
+  (Driver info: chromedriver=2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4),platform=Mac OS X 10.11.2 x86_64)
+    at WebDriverError (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/error.js:27:10)
+    at NoSuchElementError (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/error.js:230:10)
+    at Object.checkLegacyResponse (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/error.js:580:13)
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver.js:360:15
+    at Promise.invokeCallback_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:1329:14)
+    at TaskQueue.execute_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2790:14)
+    at TaskQueue.executeNext_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2773:21)
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2652:27
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:639:7
+    at process._tickCallback (node.js:357:9)
+From: Task: WebElement.sendKeys()
+    at Driver.schedule (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver.js:344:17)
+    at WebElementPromise.schedule_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver.js:1712:25)
+    at WebElementPromise.sendKeys (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver.js:1875:19)
+    at Object.&lt;anonymous&gt; (/Users/Shared/Probetools-Frontend/app/checklist/checklist-spec.js:41:18)
+    at /usr/local/lib/node_modules/protractor/node_modules/jasminewd2/index.js:96:23
+    at new Promise (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:1043:7)
+    at controlFlowExecute (/usr/local/lib/node_modules/protractor/node_modules/jasminewd2/index.js:82:18)
+    at TaskQueue.execute_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2790:14)
+    at TaskQueue.executeNext_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2773:21)
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2652:27
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:639:7
+    at process._tickCallback (node.js:357:9)
+From: Task: Run it(&quot;Should Fill Audit Information&quot;) in control flow
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/protractor/node_modules/jasminewd2/index.js:81:14)
+    at attemptAsync (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1916:24)
+    at QueueRunner.run (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1871:9)
+    at QueueRunner.execute (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1859:10)
+    at Spec.Env.queueRunnerFactory (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:697:35)
+    at Spec.execute (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:359:10)
+    at Object.fn (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2479:37)
+    at attemptAsync (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1916:24)
+    at QueueRunner.run (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1871:9)
+    at /usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1898:16
+    at /usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1842:9
+    at complete (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:371:9)
+    at QueueRunner.clearStack (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:660:9)
+    at QueueRunner.run (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1881:12)
+    at /usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1898:16
+    at /usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1842:9
+    at /usr/local/lib/node_modules/protractor/node_modules/jasminewd2/index.js:18:5
+    at Promise.invokeCallback_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:1329:14)
+    at TaskQueue.execute_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2790:14)
+    at TaskQueue.executeNext_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2773:21)
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2652:27
+    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:639:7
+    at process._tickCallback (node.js:357:9)
+From asynchronous test: 
+Error
+    at Suite.&lt;anonymous&gt; (/Users/Shared/Probetools-Frontend/app/checklist/checklist-spec.js:34:3)
+    at addSpecsToSuite (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:833:25)
+    at Env.describe (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:802:7)
+    at jasmineInterface.describe (/usr/local/lib/node_modules/protractor/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3375:18)
+    at Object.&lt;anonymous&gt; (/Users/Shared/Probetools-Frontend/app/checklist/checklist-spec.js:1:1)
+    at Module._compile (module.js:434:26)
+    at Object.Module._extensions..js (module.js:452:10)
+    at Module.load (/usr/local/lib/node_modules/coffee-script/lib/coffee-script/register.js:45:36)
+    at Function.Module._load (module.js:310:12)
+    at Module.require (module.js:365:17)
+    at require (module.js:384:17)
+    at /usr/local/lib/node_modules/protractor/node_modules/jasmine/lib/jasmine.js:71:5
+    at Array.forEach (native)
+    at Jasmine.loadSpecs (/usr/local/lib/node_modules/protractor/node_modules/jasmine/lib/jasmine.js:70:18)
+    at Jasmine.execute (/usr/local/lib/node_modules/protractor/node_modules/jasmine/lib/jasmine.js:154:8)
+    at /usr/local/lib/node_modules/protractor/built/frameworks/jasmine.js:118:15
+    at Function.promise (/usr/local/lib/node_modules/protractor/node_modules/q/q.js:682:9)
+    at /usr/local/lib/node_modules/protractor/built/frameworks/jasmine.js:90:14
+    at _fulfilled (/usr/local/lib/node_modules/protractor/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/usr/local/lib/node_modules/protractor/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/usr/local/lib/node_modules/protractor/node_modules/q/q.js:796:13)
+    at /usr/local/lib/node_modules/protractor/node_modules/q/q.js:556:49
+    at runSingle (/usr/local/lib/node_modules/protractor/node_modules/q/q.js:137:13)
+    at flush (/usr/local/lib/node_modules/protractor/node_modules/q/q.js:125:13)
+    at doNTCallback0 (node.js:408:9)
+    at process._tickCallback (node.js:337:13)</span></li></ul></li><li id="84ec1350-2401-11e6-ac65-4f8640a62eb4" class="passed" data-spec="spec3" data-name="Should Fill Customer Information" data-browser="chrome"><span class="passed">&#10003;</span><a href="8317965b193480694b93913f7b9ca7c1.png">Should Fill Customer Information</a>(6 s)</li><li id="84ec1351-2401-11e6-ac65-4f8640a62eb4" class="passed" data-spec="spec4" data-name="Should Fill Production Information" data-browser="chrome"><span class="passed">&#10003;</span><a href="b954a9b0c8750b534efb044a463ab593.png">Should Fill Production Information</a>(1 s)</li><li id="84ec1352-2401-11e6-ac65-4f8640a62eb4" class="passed" data-spec="spec5" data-name="Should Fill Water Supply" data-browser="chrome"><span class="passed">&#10003;</span><a href="a513664e6af1853fd39df3756a760cbd.png">Should Fill Water Supply</a>(1 s)</li><li id="84ec1353-2401-11e6-ac65-4f8640a62eb4" class="passed" data-spec="spec6" data-name="Should Fill Value Stream" data-browser="chrome"><span class="passed">&#10003;</span><a href="3b0eace90eb5e6513a2979d77c342009.png">Should Fill Value Stream</a>(0.857 s)</li><li id="84ec1354-2401-11e6-ac65-4f8640a62eb4" class="passed" data-spec="spec7" data-name="should Click on Save function" data-browser="chrome"><span class="passed">&#10003;</span><a href="3f7bbe1575dca2030ad04a2f7452cf1e.png">should Click on Save function</a>(6 s)</li></ul><a href="javascript:showhide('84ec6170-2401-11e6-ac65-4f8640a62eb4')">Toggle Configuration</a><div class="config" id="84ec6170-2401-11e6-ac65-4f8640a62eb4" style="display: none"><h4>Configuration</h4><li>Jasmine version:  2.4.1</li><li>Browser name:  chrome</li><li>Browser version:  50.0.2661.102</li><li>Platform:  Mac OS X</li><li>Javascript enabled:  true</li><li>Css selectors enabled:  true</li></div>

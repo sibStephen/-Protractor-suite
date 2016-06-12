@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3 class="modal-title">Add Application Method</h3>
+</div>
+<div class="modal-body">
+  <form class="form form-light" name="form_add_app">
+    <div class="form-row align-center space-around">
+      <label for="dropdown" class="column-6 text-normal text-center">Department Name</label>
+      <div class="form-item column-6">
+        <select id="dropdown" ng-model="adapm.data.dtid" required="true">
+          <option value="">- Select Department -</option>
+          <option ng-repeat="department in adapm.departments track by $index" value="{{department.tid}}">{{department.name}}</option>
+        </select>
+        <label for="dropdown" class="select"></label>
+      </div>
+    </div>
+    <div class="form-row align-center space-around">
+      <label for="dropdown" class="column-6 text-normal text-center">Application Method</label>
+      <div class="form-item column-6">
+        <input type="text" ng-model="adapm.data.app_name" name="field-app" id="field-app" required="true">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-modal btn-full-width" ng-disabled="form_add_app.$error.required" ng-click="save(adapm.data)">OK</button>
+</div>

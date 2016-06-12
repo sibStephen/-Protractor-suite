@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h3 class="modal-title">Add Department</h3>
+</div>
+<div class="modal-body">
+  <form class="form form-light" name="form_add_department">
+    <div class="form-row align-center space-around">
+      <label for="dropdown" class="column-6 text-normal text-center">Department Name</label>
+      <div class="form-item column-6">
+        <input type="text" ng-model="ad.data.dname" name="field-department" id="field-department" required="true">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-modal btn-full-width" ng-disabled="form_add_department.$error.required" ng-click="save(ad.data)">OK</button>
+</div>

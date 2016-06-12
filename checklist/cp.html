@@ -1,0 +1,183 @@
+<div class="modal-header">
+  <h3 class="modal-title">Compute Columns</h3>
+</div>
+<div class="modal-body">
+  <div class="padding flex-table flex-table-cp">
+    <div class="flex-table-header">
+      <div class="flex-table-row repeat-divider">
+        <h3 class="flex-table_header_title flex-table-col-4">Formula</h3>
+        <h3 class="flex-table_header_title flex-table-col-5">Label</h3>
+        <h3 class="flex-table_header_title flex-table-col-5">Acc Label</h3>
+        <h3 class="flex-table_header_title flex-table-col-2 text-center">Map Columns</h3>
+        <h3 class="flex-table_header_title flex-table-column">Actions</h3>
+      </div>
+    </div>
+    <div class="flex-table-content">
+      <form class="form form-inline form-light repeat-divider" name="form_computed_column" ng-repeat="computed_column in cp.computed_columns track by $index">
+        <div class="flex-table-row">
+          <div class="flex-table-col-4">
+            <div class="form-row">
+              <div class="form-item">
+                <select id="field_column_formula" name="field_column_formula" ng-disabled="computed_column.disabled" ng-model="computed_column.cc_data.formula_id" ng-change="computed_column.cc_data.interval_radio=10" title="computed_column.cc_data.formula_id" required="true">
+                  <option value="" selected>- Select -</option>
+                  <option ng-repeat="(key, formula) in cp.formulas track by $index" value="{{key}}">{{formula.fname}}</option>
+                </select>
+                <label for="field_column_formula" ng-show="!computed_column.disabled" class="select"></label>
+              </div>
+            </div>
+          </div>
+          <div class="flex-table-col-5">
+            <div class="form-row flex-dir-col">
+              <div class="form-item">
+                <input type="text" name="field_column_name" required="true" ng-disabled="computed_column.disabled" placeholder="{{cp.formulas[computed_column.cc_data.formula_id].name||'Provide Label'}}" ng-model="computed_column.cc_data.name" title="computed_column.cc_data.name" />
+                <div class="validation-messages no-margin">
+                  <div ng-show="form_computed_column.field_column_name.$error.required" class="text-small">Please Enter Label</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-table-col-5">
+            <div class="form-row flex-dir-col">
+              <div class="form-item">
+                <input type="text" name="field_column_acc_name" required="true" ng-disabled="computed_column.disabled" placeholder="{{cp.formulas[computed_column.cc_data.formula_id].acc_name||'Provide Acc Label'}}" ng-model="computed_column.cc_data.acc_name" title="computed_column.cc_data.acc_name" />
+                <div class="validation-messages no-margin">
+                  <div ng-show="form_computed_column.field_column_acc_name.$error.required" class="text-small">Please Enter Acc Label</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-table-col-2" ng-if="computed_column.cc_data.formula_id == 'acc_vol'">
+            <div class="form-row" ng-repeat="param in cp.formulas[computed_column.cc_data.formula_id].vol_csv_params track by $index">
+              <div class="form-item form-item-inline">
+                <label for="dropdown-params{{$index}}" class="label">{{param}}<span class="required-field">*</span></label>
+                <select name="field_column_columns{{$index}}" id="dropdown-params{{$index}}" required="true" ng-disabled="computed_column.disabled" ng-model="computed_column.cc_data.column_name[$index]" title="computed_column.cc_data.column_name[$index]" class="field">
+                  <option value="">- Select -</option>
+                  <option ng-repeat="column in cp.columns track by $index" value="{{column}}">{{column}}</option>
+                </select>
+                <label for="dropdown-params{{$index}}" ng-show="!computed_column.disabled" class="select"></label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-item form-item-inline">
+                <label for="dropdown-flow-unit" class="label">Unit of Flow Rate<span class="required-field">*</span></label>
+                <select name="field_column_unit" id="dropdown-flow-unit" required="true" ng-disabled="computed_column.disabled" ng-model="computed_column.cc_data.rate_unit" class="field">
+                  <option value="">- Select -</option>
+                  <option ng-repeat="time_unit in cp.units.time_unit track by $index" value="{{time_unit.data}}">{{time_unit.label}}</option>
+                </select>
+                <label for="dropdown-flow-unit" ng-show="!computed_column.disabled" class="select"></label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-item form-item-inline">
+                <label for="dropdown-interval" class="label">Sampling Interval (in seconds)<span class="required-field">*</span></label>
+                <div class="input-group-buttons field">
+                  <div class="group-button-item">
+                    <input type="radio" required="true" ng-model="computed_column.cc_data.interval_radio" name="field_column_interval{{$index}}" id="dropdown-interval{{$index}}-0" value="5" ng-disabled="computed_column.disabled"/>
+                    <label class="group-button-item-label" for="dropdown-interval{{$index}}-0"> 5</label>
+                  </div>
+                  <div class="group-button-item">
+                    <input type="radio" required="true" ng-model="computed_column.cc_data.interval_radio" name="field_column_interval{{$index}}" id="dropdown-interval{{$index}}-1" value="10" ng-disabled="computed_column.disabled"/>
+                    <label class="group-button-item-label" for="dropdown-interval{{$index}}-1"> 10</label>
+                  </div>
+                  <div class="group-button-item">
+                    <input type="radio" required="true" ng-model="computed_column.cc_data.interval_radio" name="field_column_interval{{$index}}" id="dropdown-interval{{$index}}-2" value="30" ng-disabled="computed_column.disabled"/>
+                    <label class="group-button-item-label" for="dropdown-interval{{$index}}-2"> 30</label>
+                  </div>
+                  <div class="group-button-item">
+                    <input type="radio" required="true" ng-model="computed_column.cc_data.interval_radio" name="field_column_interval{{$index}}" id="dropdown-interval{{$index}}-3" value="0" ng-disabled="computed_column.disabled"/>
+                    <label class="group-button-item-label" for="dropdown-interval{{$index}}-3"> Other</label>
+                  </div>
+                  <div ng-if="computed_column.cc_data.interval_radio=='0'" class="group-button-item group-button-item--text">
+                    <input type="text" required="true" ng-model="computed_column.cc_data.interval_text" name="field_column_interval" id="dropdown-interval-text" ng-pattern="/^\d+$/" ng-disabled="computed_column.disabled"/>
+                  </div>
+                </div>
+                <div class="validation-messages">
+                  <div ng-show="form_computed_column.field_column_interval.$error.pattern" >Please Enter A Numeric Value</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-table-col-2" ng-if="computed_column.cc_data.formula_id == 'acc_energy'">
+            <div class="form-row">
+              <div class="form-item form-item-inline">
+                <label for="dropdown-params-computed-vol" class="label">Acc Volume<span class="required-field">*</span></label>
+                <select name="field_column_columns_computed_vol" id="dropdown-params-computed-vol" required="true" ng-disabled="computed_column.disabled" ng-model="computed_column.cc_data.computed_vol" title="computed_column.cc_data.computed_vol" class="field">
+                  <option value="">- Select -</option>
+                  <option ng-repeat="column in cp.vol_columns track by $index" value="{{column.id}}">{{column.name}}</option>
+                </select>
+                <label for="dropdown-params-computed-vol" ng-show="!computed_column.disabled" class="select"></label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-item form-item-inline">
+                <label for="dropdown-vol-unit" class="label">Volume Unit<span class="required-field">*</span></label>
+                <select name="field_column_unit" id="dropdown-vol-unit" required="true" ng-disabled="computed_column.disabled" ng-model="computed_column.cc_data.vol_unit" class="field">
+                  <option value="">- Select -</option>
+                  <option ng-repeat="vol_unit in cp.units.vol_unit track by $index" value="{{vol_unit.data}}">{{vol_unit.label}}</option>
+                </select>
+                <label for="dropdown-vol-unit" ng-show="!computed_column.disabled" class="select"></label>
+              </div>
+            </div>
+            <div class="form-row form-item-inline">
+              <label for="dropdown-params-temp" class="label">Delta T</label>
+              <div class="form-item form-row field no-margin">
+                <div class="column-6">
+                  <label for="dropdown-params-temp-in">Temp IN<span class="required-field">*</span></label>
+                  <div class="form-item no-margin">
+                    <select name="field_column_columns_temp_in" id="dropdown-params-temp-in" required="true" ng-disabled="computed_column.disabled" ng-model="computed_column.cc_data.temp_in" title="computed_column.cc_data.temp_in">
+                      <option value="">- Select -</option>
+                      <option ng-repeat="column in cp.columns track by $index" value="{{column}}">{{column}}</option>
+                    </select>
+                    <label for="dropdown-params-temp-in" ng-show="!computed_column.disabled" class="select"></label>
+                  </div>
+                </div>
+                <div class="column-6">
+                  <label for="dropdown-params-temp-out">Temp OUT<span class="required-field">*</span></label>
+                  <div class="form-item no-margin">
+                    <select name="field_column_columns_temp_out" id="dropdown-params-temp-out" required="true" ng-disabled="computed_column.disabled" ng-model="computed_column.cc_data.temp_out" title="computed_column.cc_data.temp_out">
+                      <option value="">- Select -</option>
+                      <option ng-repeat="column in cp.columns track by $index" value="{{column}}">{{column}}</option>
+                    </select>
+                    <label for="dropdown-params-temp-out" ng-show="!computed_column.disabled" class="select"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-item form-item-inline">
+                <label for="dropdown-temp-unit" class="label">Temp Unit<span class="required-field">*</span></label>
+                <select name="field_column_unit" id="dropdown-temp-unit" required="true" ng-disabled="computed_column.disabled" ng-model="computed_column.cc_data.temp_unit" class="field">
+                  <option value="">- Select -</option>
+                  <option ng-repeat="temp_unit in cp.units.temp_unit track by $index" value="{{temp_unit.data}}">{{temp_unit.label}}</option>
+                </select>
+                <label for="dropdown-temp-unit" ng-show="!computed_column.disabled" class="select"></label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-item form-item-inline">
+                <label for="dropdown-energy-unit" class="label">Energy Unit<span class="required-field">*</span></label>
+                <select name="field_column_unit" id="dropdown-energy-unit" required="true" ng-disabled="computed_column.disabled" ng-model="computed_column.cc_data.energy_unit" class="field">
+                  <option value="">- Select -</option>
+                  <option ng-repeat="energy_unit in cp.units.energy_unit track by $index" value="{{energy_unit.data}}">{{energy_unit.label}}</option>
+                </select>
+                <label for="dropdown-energy-unit" ng-show="!computed_column.disabled" class="select"></label>
+              </div>
+            </div>
+          </div>
+          <div class="flex-table-column">
+            <div class="form-row flex-table-row-actions">
+              <i class="icon-save color-blue pointer" ng-disabled="form_computed_column.$error.required||form_computed_column.$error.pattern||cp.checklist_info.isFinalized" ng-show="!computed_column.disabled" ng-click="cp.save_column(computed_column.cc_data, $index)"></i>
+              <i class="icon-times color-red pointer" ng-disabled="form_computed_column.$error.required||form_computed_column.$error.pattern||cp.checklist_info.isFinalized" ng-click="cp.deleteColumn(cp.computed_columns, $index, computed_column.cc_id)"></i>
+            </div>
+          </div>
+        </div>
+      </form>
+      <button class="btn btn-primary btn-sm"  ng-disabled="cp.checklist_info.isFinalized" ng-click="cp.addMore(cp.computed_columns)">
+        <span class="btn-icon-position icon-plus"></span> Add More
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-modal btn-full-width" ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,478 @@
+<ul id="progress">
+  <li>
+    <div class="node" ng-class="{ 'bg-green': vm.probetool.group_audit.$valid, 'bg-blue': vm.current==0&&vm.probetool.group_audit.$invalid, 'bg-grey': vm.probetool.group_audit.$invalid&&vm.current!=0}">
+      <span ng-if="vm.probetool.group_audit.$valid" class="status icon-check"></span>
+      <span ng-if="vm.probetool.group_audit.$invalid" class="status">1</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider" ng-class="{ 'bg-green': vm.probetool.group_audit.$valid, 'bg-white': vm.probetool.group_audit.$invalid }" id="accordion-divider-1"></div>
+  </li>
+  <li>
+    <div class="node" ng-class="{ 'bg-green': vm.probetool.group_customer.$valid, 'bg-blue': vm.current==1&&vm.probetool.group_customer.$invalid, 'bg-grey': vm.probetool.group_customer.$invalid&&vm.current!=1}">
+      <span ng-if="vm.probetool.group_customer.$valid" class="status icon-check"></span>
+      <span ng-if="vm.probetool.group_customer.$invalid" class="status">2</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider " ng-class="{ 'bg-green': vm.probetool.group_customer.$valid, 'bg-white': vm.probetool.group_customer.$invalid}" id="accordion-divider-2"></div>
+  </li>
+  <li>
+    <div class="node " ng-class="{ 'bg-green': vm.probetool.group_production.$valid, 'bg-blue': vm.current==2&&vm.probetool.group_production.$invalid, 'bg-grey': vm.probetool.group_production.$invalid&&vm.current!=2}">
+      <span ng-if="vm.probetool.group_production.$valid" class="status icon-check"></span>
+      <span ng-if="vm.probetool.group_production.$invalid" class="status">3</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider " ng-class="{ 'bg-green': vm.probetool.group_production.$valid, 'bg-white': vm.probetool.group_production.$invalid}" id="accordion-divider-3"></div>
+  </li>
+  <li>
+    <div class="node" ng-class="{ 'bg-green': vm.probetool.group_watersupply.$valid, 'bg-blue': vm.current==3&& vm.probetool.group_watersupply.$invalid, 'bg-grey': vm.probetool.group_watersupply.$invalid&&vm.current!=3}">
+      <span ng-if="vm.probetool.group_watersupply.$valid" class="status icon-check"></span>
+      <span ng-if="vm.probetool.group_watersupply.$invalid" class="status">4</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider " ng-class="{ 'bg-green': vm.probetool.group_watersupply.$valid, 'bg-white': vm.probetool.group_watersupply.$invalid}" id="accordion-divider-4"></div>
+  </li>
+  <li>
+    <div class="node" ng-class="{ 'bg-green': vm.probetool.group_valuestream.$valid, 'bg-blue': vm.current==4&&vm.probetool.group_valuestream.$invalid, 'bg-grey': vm.probetool.group_valuestream.$invalid&&vm.current!=4}">
+      <span ng-if="vm.probetool.group_valuestream.$valid" class="status icon-check"></span>
+      <span ng-if="vm.probetool.group_valuestream.$invalid" class="status">5</span>
+    </div>
+  </li>
+</ul>
+<accordion icon-position="right" one-at-a-time="true" close-icon-class="icon-plus-square-o" open-icon-class="icon-minus-square-o">
+  <form name="vm.probetool" novalidate>
+    <accordion-item item-title="Audit Information" accordion-id="accordion-divider-1" open="true">
+      <ng-form name="vm.probetool.group_audit"  ng-disabled="vm.data.checklist_basic_info.isFinalized">
+      <div class="import-aquascan">
+        <div ng-hide="vm.active || vm.data.checklist_basic_info.nid || !isConnected" class="pull-right"><a ui-sref="layout.importAquaScan">Import From Aqua Scan</a></div>
+      </div>
+      <div class="form form-inline padding form-dark">
+        <div class="form-row">
+          <div class="form-col">
+            <label>Report Id<span class="required-field">*</span></label>
+            <div class="form-item"><input type="text" ng-model="vm.data.checklist[0].field_report_id.und[0].value" disabled="" name="field_report_id" required></div>
+            <div class="validation-messages" ng-show="vm.showvalidationmsg">
+              <div ng-show="vm.probetool.group_audit.field_report_id.$error.required">Please Enter Report Id</div>
+            </div>
+          </div>
+          <div class="form-col">
+            <label>Reporter Name<span class="required-field">*</span></label>
+            <div class="form-item"><input type="text" ng-model="vm.data.checklist[0].title" ng-init="vm.data.checklist[0].title=''" auto-next name="title" required></div>
+            <div class="validation-messages" ng-show="vm.showvalidationmsg">
+              <div ng-show="vm.probetool.group_audit.title.$error.required">Please Enter Reporter Name</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-col">
+            <label>Reporter Location</label>
+            <div class="form-item"><input name="field_reporter_location" auto-next ng-model="vm.data.checklist[0].field_reporter_location.und[0].value" ng-init="vm.data.checklist[0].field_reporter_location.und[0].value=''" type="text">
+          </div>
+        </div>
+        <div class="form-col">
+          <label>Report Date<span class="required-field">*</span></label>
+          <div class="form-item">
+            <input ng-readonly='true' type="text" ng-model="vm.data.checklist[0].field_audit_date.und[0].value" name="field_audit_date" ng-required="true" uib-datepicker-popup="dd/MM/yyyy" ng-focus="vm.datepickeropen=true" datepicker-options="vm.datepickerOption" ng-init="vm.data.checklist[0].field_audit_date.und[0].value=vm.todaysdate" datepicker-localdate is-open='vm.datepickeropen'/>
+            <button ng-click="vm.datepickeropen=!vm.datepickeropen" class="btn btn-sm btn-primary rightoftextbox"><span class="icon-calendar"></span></button>
+          </div>
+          <div class="validation-messages" ng-show="vm.showvalidationmsg">
+            <div ng-show="vm.probetool.group_audit.field_audit_date.$invalid">Please Enter Report Date</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-col">
+          <label>Business Unit<span class="required-field">*</span></label>
+          <div class="form-item">
+          <selectize auto-next ng-required="true" name="businessunit" ng-init="vm.data.checklist[0].field_business_unit.und[0].tid='0'"  ng-model="vm.data.checklist[0].field_business_unit.und[0].tid" options="vm.businessUnitData" config="vm.businessUnitConfig"></selectize>
+        </div>
+        <div class="validation-messages" ng-show="vm.showvalidationmsg">
+          <div ng-show="vm.data.checklist[0].field_business_unit.und[0].tid==0">Please Select Business Unit</div>
+        </div>
+      </div>
+      <div class="form-col" ng-show="vm.data.checklist[0].field_business_unit.und[0].tid!=0">
+        <label>Sector<span class="required-field">*</span></label>
+        <div class="form-item">
+          <selectize auto-next ng-required="true" config="vm.sectorConfig" ng-init="vm.data.checklist[0].field_sector.und[0].tid='0'" options="vm.sectorData"
+            ng-model="vm.data.checklist[0].field_sector.und[0].tid" >
+          </selectize>
+        </div>
+        <div class="validation-messages" ng-show="vm.showvalidationmsg">
+          <div ng-show="vm.data.checklist[0].field_sector.und[0].tid==0">Please Select Sector</div>
+        </div>
+      </div>
+      <div class="form-col" ng-show="vm.data.checklist[0].field_sector.und[0].tid!=0">
+        <label>Sub Sector<span class="required-field">*</span></label>
+        <div class="form-item">
+          <selectize auto-next ng-required="true" config="vm.subSectorConfig" ng-init="vm.data.checklist[0].field_sub_sector.und[0].tid='0'" options="vm.subSectorData"
+            ng-model="vm.data.checklist[0].field_sub_sector.und[0].tid" >
+          </selectize>
+        </div>
+        <div class="validation-messages" ng-show="vm.showvalidationmsg">
+          <div ng-show="vm.data.checklist[0].field_sub_sector.und[0].tid==0">Please Select Sub Sector</div>
+        </div>
+      </div>
+    </div>
+    <ng-form class="form-row departmentRepeat" name="vm.probetool.department[$index]" ng-show="vm.data.checklist[0].field_sub_sector.und[0].tid!=0" ng-repeat="department in vm.data.department track by $index">
+    <div class="form-col">
+      <label>Department<span class="required-field">*</span></label>
+      <div class="form-item">
+      <selectize name="department" ng-model="department.field_departments.und[0].tid" auto-next options="vm.departmentArr[$index]" ng-change="vm.change(department.field_departments.und[0].tid, '{{department.field_departments.und[0].tid}}')" ng-required="true" config="vm.departmentConfig"></selectize>
+    </div>
+    <div class="validation-messages" ng-show="vm.probetool.department[$index].department.$invalid && vm.showvalidationmsg">
+      <div>Please Select Department</div>
+    </div>
+  </div>
+  <div class="form-col" ng-show="department.field_departments.und[0].tid!=0">
+    <label>Application Method<span class="required-field">*</span></label>
+    <div class="form-item">
+      <div class="select" multiple>
+        <select multiple="multiple" required="required" ng-model="department.field_application_method.und" name="applicationMethod" data-ng-options="applicationMethod.name for applicationMethod in vm.applicationMethodData[department.field_departments.und[0].tid] track by applicationMethod.tid" >
+        </select>
+      </div>
+    </div>
+    <div class="validation-messages" ng-show="department.field_application_method.und.length==0 && vm.showvalidationmsg ">
+      <div>Please Select Application Method</div>
+    </div>
+  </div>
+  <div class="deleteBtn">
+    <button ng-if="$index > 0" class="btn btn-danger btn-sm " ng-click="vm.deleteRepeat(vm.data.department,$index);vm.filteredDepartment(vm.departmentData,department.field_departments.und[0].tid);"><span class="btn-icon-position icon-trash-o"> Delete</span></button>
+  </div>
+  </ng-form>
+  <div class="clearfix">
+    <button ng-show="vm.departmentData.length" ng-disabled="vm.departmentData.length==vm.data.department.length || vm.probetool.department[vm.data.department.length-1].$invalid" class="btn btn-primary btn-sm" ng-click="vm.addMore(vm.data.department,{});vm.filteredDepartment(vm.departmentData);"><span class="btn-icon-position icon-plus"></span>&nbsp;&nbsp;Add More</button>
+    <button ng-show="vm.data.checklist[0].field_sub_sector.und[0].tid&&vm.data.checklist[0].field_sub_sector.und[0].tid!=0" ng-disabled="!isConnected" class="btn btn-primary btn-sm pull-right" ng-click="vm.addTerm('app')"><span class="btn-icon-position icon-ticket"></span>Add Application Method</button>
+    <button ng-show="vm.data.checklist[0].field_sub_sector.und[0].tid&&vm.data.checklist[0].field_sub_sector.und[0].tid!=0" ng-disabled="!isConnected" class="btn btn-primary btn-sm pull-right" ng-click="vm.addTerm('department')"><span class="btn-icon-position icon-ticket"> </span>Add Department</button>
+    <button ng-show="vm.departmentData.length" ng-disabled="!isConnected||vm.probetool.department[vm.data.department.length-1].$invalid" class="btn btn-primary btn-sm pull-right" ng-click="vm.applyLabels()"><span class="btn-icon-position icon-ticket"></span>Apply Labels</button>
+  </div>
+</div>
+</ng-form>
+<div class="accordion-footer padding">
+  <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.probetool.group_audit,1);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+</div>
+</accordion-item>
+<accordion-item item-title="Customer Information" accordion-id="accordion-divider-2">
+<ng-form name="vm.probetool.group_customer" ng-disabled="vm.data.checklist_basic_info.isFinalized">
+<div class="form form-inline padding form-dark">
+  <div class="form-row">
+    <div class="form-col">
+      <label>Customer Number<span class="required-field">*</span></label>
+      <div class="form-item"><input name="field_customer_number" auto-next ng-model="vm.data.customer_information[0].field_customer_number.und[0].value" ng-init="vm.data.customer_information[0].field_customer_number.und[0].value=''" type="text" required /></div>
+      <div class="validation-messages" ng-show="vm.showvalidationmsg">
+        <div ng-show="vm.probetool.group_customer.field_customer_number.$error.required">Please Enter Customer Number</div>
+      </div>
+    </div>
+    <div class="form-col">
+      <label>Customer Name<span class="required-field">*</span></label>
+      <div class="form-item"><input name="field_customer_name" auto-next  ng-model="vm.data.customer_information[0].title" ng-init="vm.data.customer_information[0].title=''" type="text" required /></div>
+      <div class="validation-messages" ng-show="vm.showvalidationmsg">
+        <div ng-show="vm.probetool.group_customer.field_customer_name.$error.required">Please Enter Customer Name</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-col">
+      <label>Customer Group Name<span class="required-field">*</span></label>
+      <div class="form-item"><input type="text" name="field_group_name" auto-next  ng-model="vm.data.customer_information[0].field_group_name.und[0].value" ng-init="vm.data.customer_information[0].field_group_name.und[0].value=''" required /></div>
+      <div class="validation-messages" ng-show="vm.showvalidationmsg">
+        <div ng-show="vm.probetool.group_customer.field_group_name.$error.required">Please Enter Customer Group Name</div>
+      </div>
+    </div>
+    <div class="form-col">
+      <label>Customer Contact<span class="required-field">*</span></label>
+      <div class="form-item"><input type="text" name="field_customer_contact" auto-next  ng-model="vm.data.customer_information[0].field_customer_contact.und[0].value" ng-init="vm.data.customer_information[0].field_customer_contact.und[0].value=''" type="text" required /></div>
+      <div class="validation-messages" ng-show="vm.showvalidationmsg">
+        <div ng-show="vm.probetool.group_customer.field_customer_contact.$error.required">Please Enter Customer Contact</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-col">
+      <label>Customer Role</label>
+      <div class="form-item"><input type="text" auto-next ng-model="vm.data.customer_information[0].field_customer_role.und[0].value" ng-init="vm.data.customer_information[0].field_customer_role.und[0].value=''" name="field_customer_role" /></div>
+    </div>
+    <div class="form-col">
+      <label>Postal/Zip Code</label>
+      <div class="form-item"><input type="text" name="field_postal_code" auto-next  ng-model="vm.data.customer_information[0].field_postal_code.und[0].value" ng-init="vm.data.customer_information[0].field_postal_code.und[0].value=''"/></div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-col">
+      <label>Contact Phone Number</label>
+      <div class="form-item"><input type="text" auto-next ng-model="vm.data.customer_information[0].field_contact_phone_number.und[0].value" ng-init="vm.data.customer_information[0].field_contact_phone_number.und[0].value=''" name="field_contact_phone_number" /></div>
+    </div>
+    <div class="form-col">
+      <label>Contact Email</label>
+      <div class="form-item"><input type="email" auto-next name="field_contact_email" ng-model="vm.data.customer_information[0].field_contact_email.und[0].value" ng-init="vm.data.customer_information[0].field_contact_email.und[0].value=''"/></div>
+      <div class="validation-messages">
+        <div ng-show="vm.probetool.group_customer.field_contact_email.$error.email">Please Enter A Valid Email Address</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-col">
+      <label>Location</label>
+      <div class="form-item"><input type="text" auto-next name="field_location" ng-model="vm.data.customer_information[0].field_location.und[0].value" ng-init="vm.data.customer_information[0].field_location.und[0].value=''"/></div>
+    </div>
+    <div class="form-col">
+      <label>Country<span class="required-field">*</span></label>
+      <div class="form-item">
+        <selectize auto-next name="field_country" config= "{valueField: 'name',labelField: 'name', placeholder : 'Select A Country',
+          maxItems: 1,searchField: ['name']}"  options="vm.countries" ng-init="vm.data.customer_information[0].field_country.und[0].value=''" ng-model="vm.data.customer_information[0].field_country.und[0].value" id="field_country1"  ng-required="true" >
+        </selectize>
+      </div>
+      <div class="validation-messages" ng-show="vm.showvalidationmsg">
+        <div ng-show="vm.data.customer_information[0].field_country.und[0].value==''">Please Select Country Name</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-col">
+      <label>Currency<span class="required-field">*</span></label>
+      <div class="form-item">
+        <selectize name="field_local_currency" ng-init="vm.data.customer_information[0].field_local_currency.und[0].tid='0'" config="{ valueField: 'tid',
+          labelField: 'name', placeholder : 'Select A Currency',
+          maxItems: 1, searchField: ['name']}" options="vm.terms.local_currency" ng-model="vm.data.customer_information[0].field_local_currency.und[0].tid" auto-next id="field_local_currency" ng-required="true">
+          <selectize>
+          </div>
+          <div class="validation-messages" ng-show="vm.showvalidationmsg">
+            <div ng-show="vm.data.customer_information[0].field_local_currency.und[0].tid=='0'">Please Select Currency</div>
+          </div>
+        </div>
+        <div class="form-col"></div>
+      </div>
+    </div>
+    </ng-form>
+    <div class="accordion-footer padding">
+      <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.probetool.group_customer,2);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+    </div>
+  </accordion-item>
+  <accordion-item item-title="Production Information" accordion-id="accordion-divider-3">
+    <ng-form name="vm.probetool.group_production" ng-disabled="vm.data.checklist_basic_info.isFinalized">
+    <div class="form form-inline padding form-dark">
+      <div class="form-row">
+        <div class="form-col">
+          <label>Total Water In Products<span class="required-field">*</span></label>
+          <div class="form-item">
+            <input type="text" auto-next  ng-model="vm.data.product_information[0].field_total_water_in_product.und[0].value" ng-init="vm.data.product_information[0].field_total_water_in_product.und[0].value=''" name="field_total_water_in_product" required autocomplete="off" ng-pattern=" /^\d+$/"/>
+            <div class="validation-messages">
+              <div  ng-show="vm.probetool.group_production.field_total_water_in_product.$error.pattern" >Please Enter A Numeric Value</div>
+              <div  ng-show="vm.showvalidationmsg && vm.probetool.group_production.field_total_water_in_product.$error.required">
+                Please Enter Total Water In Products
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-col">
+          <label>Operating Days Per Week</label>
+          <div class="form-item"><input type="text"  auto-next ng-model="vm.data.product_information[0].field_operating_days_per_week.und[0].value" ng-init="vm.data.product_information[0].field_operating_days_per_week.und[0].value=''" name="field_operating_days_per_week" ng-pattern="/^[0-7]$/" /></div>
+          <div class="validation-messages">
+            <div  ng-show="vm.probetool.group_production.field_operating_days_per_week.$error.pattern">Please Enter A Number Less Than Or Equal to 7</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-col">
+          <label>Operating Hours Per Day</label>
+          <div class="form-item"><input type="text" auto-next name="field_operating_hours_per_day"  ng-model="vm.data.product_information[0].field_operating_hours_per_day.und[0].value" ng-init="vm.data.product_information[0].field_operating_hours_per_day.und[0].value=''" ng-pattern="/^([1-9]|[1][0-9]|[2][0-4])$/" /></div>
+          <div class="validation-messages">
+            <div  ng-show="vm.probetool.group_production.field_operating_hours_per_day.$error.pattern">Please Enter A Number Less Than Or Equal to 24</div>
+          </div>
+        </div>
+        <div class="form-col">
+          <label>Total Number of Operating Weeks Per Year</label>
+          <div class="form-item"><input type="text" auto-next name="field_operating_weeks_per_year" ng-model="vm.data.product_information[0].field_operating_weeks_per_year.und[0].value" ng-init="vm.data.product_information[0].field_operating_weeks_per_year.und[0].value=''" ng-pattern="/^([1-9]|[1-4][0-9]|[5][0-2])$/" /></div>
+          <div class="validation-messages">
+            <div ng-show="vm.probetool.group_production.field_operating_weeks_per_year.$error.pattern">Please Enter A Number  Less Than Or Equal to 52</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </ng-form>
+    <div class="accordion-footer padding">
+      <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.probetool.group_production,3);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+    </div>
+  </accordion-item>
+  <accordion-item item-title="Water Supply" accordion-id="accordion-divider-4">
+    <ng-form name ="vm.probetool.group_watersupply" ng-disabled="vm.data.checklist_basic_info.isFinalized">
+    <div class="form form-inline padding form-dark">
+      <fieldset>
+        <legend>Water:</legend>
+        <ng-form name="vm.probetool.group_watersupply.field_water_custom[$index]" ng-repeat="field_water_custom in vm.data.water_supply[0].field_water_custom.und track by $index">
+        <div class="repeat-divider">
+          <div class="form-row">
+            <div class="form-col" >
+              <label>Source Name<span class="required-field">*</span></label>
+              <input auto-next type="text" required="" ng-model="field_water_custom.field_water_supply_source_name.und[0].value" name="field_water_supply_source_name" />
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.probetool.group_watersupply.field_water_custom[$index].field_water_supply_source_name.$error.required">Please Enter Water Source Name
+                </div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Source Type<span class="required-field">*</span></label>
+              <div class="form-item">
+                <selectize name="field_water_source_type" config="{ valueField: 'name',
+                  labelField: 'name', placeholder : 'Select Water Source',
+                  maxItems: 1, searchField: ['name']}" options="vm.terms.source_type" ng-model="field_water_custom.field_water_source_type.und[0].value"  auto-next id="field_water_source_type" ng-required="true">
+                </selectize>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.probetool.group_watersupply.field_water_custom[$index].field_water_source_type.$error.required">Please Select Source Type</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              {{ field_water_custom.field_ws_volume_in_report.und[0].value }}
+              <label>Volume Units<span class="required-field">*</span></label>
+              <div class="form-item">
+                <selectize name="ws_field_water_unit" config="{ valueField: 'tid',
+                  labelField: 'name', placeholder : 'Select Volume Unit',
+                  maxItems: 1, searchField: ['name']}" options="vm.terms.volume" ng-model="field_water_custom.field_water_volume_in_report.und[0].tid"  auto-next id="ws_field_water_unit" ng-required="true">
+                </selectize>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.probetool.group_watersupply.field_water_custom[$index].ws_field_water_unit.$error.required">Please Select Volume Unit</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Incoming Cost Per Volume Unit<span class="required-field">*</span></label>
+              <input auto-next type="text" required ng-model="field_water_custom.field_incoming_cost_per_unit.und[0].value"  name="ws_field_incoming_cost_per_unit" id="ws_field_incoming_cost_per_unit" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+              <div class="validation-messages">
+                <div  ng-show="vm.probetool.group_watersupply.field_water_custom[$index].ws_field_incoming_cost_per_unit.$error.pattern">Please Enter A Numeric Value
+                </div>
+                <div  ng-show="vm.showvalidationmsg && vm.probetool.group_watersupply.field_water_custom[$index].ws_field_incoming_cost_per_unit.$error.required">
+                  Please Enter Incoming Cost Per Volume Unit
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Outgoing Cost Per Volume Unit<span class="required-field">*</span></label>
+              <input auto-next type="text" required ng-model="field_water_custom.field_outgoing_cost_per_unit.und[0].value"  name="ws_field_outgoing_cost_per_unit" id="ws_field_outgoing_cost_per_unit" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+              <div class="validation-messages">
+                <div ng-show="vm.probetool.group_watersupply.field_water_custom[$index].ws_field_outgoing_cost_per_unit.$error.pattern">Please Enter A Numeric Value</div>
+                <div  ng-show="vm.showvalidationmsg && vm.probetool.group_watersupply.field_water_custom[$index].ws_field_outgoing_cost_per_unit.$error.required">
+                  Please Enter Outgoing Cost Per Volume Unit
+                </div>
+              </div>
+            </div>
+          </div>
+          <button ng-if="$index > 0" class="btn btn-danger btn-sm" ng-click="vm.deleteRepeat(vm.data.water_supply[0].field_water_custom.und,$index)"><span class="btn-icon-position icon-trash-o " > Delete</span></button>
+        </div>
+        </ng-form>
+        <button class="btn btn-primary btn-sm" disable-finalised="vm.probetool.group_watersupply.field_water_custom[vm.data.water_supply[0].field_water_custom.und.length-1].$invalid||vm.data.checklist_basic_info.isFinalized" ng-click="vm.addMore(vm.data.water_supply[0].field_water_custom.und,{'field_water_supply_source_name.und[0].value' :'','field_water_supply_source_type.und[0].value':'','field_water_unit.und[0].value':'','field_ws_cost_per_volume.und[0].value':''})"><span class="btn-icon-position icon-plus " ></span> Add More</button>
+      </fieldset>
+      <div class="form-row">
+        <!-- <div class="form-col">
+            <label>Total Volume<span class="required-field">*</span></label>
+            <div class="form-item"><input type="text" auto-next tabindex="22" ng-model="vm.data.water_supply[0].field_ws_total_water_volume.und[0].value" ng-init="vm.data.water_supply[0].field_ws_total_water_volume.und[0].value=''" name="field_ws_total_water_volume" required/></div>
+            <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.probetool.group_watersupply.field_ws_total_water_volume.$error.required">Please Enter Total Volume</div>
+            </div>
+        </div> -->
+        <div class="form-col">
+          <label>Total Incoming Water Volume<span class="required-field">*</span></label>
+          <div class="form-item"><input type="text" auto-next ng-model="vm.data.water_supply[0].field_total_incoming_water_volum.und[0].value" ng-init="vm.data.water_supply[0].field_total_incoming_water_volum.und[0].value=''" required name="field_total_incoming_water_volum" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+          <div class="validation-messages">
+            <div  ng-show="vm.probetool.group_watersupply.field_total_incoming_water_volum.$error.pattern">Please Enter A Numeric Value</div>
+            <div  ng-show="vm.showvalidationmsg && vm.probetool.group_watersupply.field_total_incoming_water_volum.$error.required">
+              Please Enter Total Incoming Water Volume
+            </div>
+          </div>
+        </div>
+        <div class="form-col">
+          <label>Total Outgoing Water Volume<span class="required-field">*</span></label>
+          <div class="form-item"><input type="text" auto-next name="field_total_outgoing_water_volum" ng-model="vm.data.water_supply[0].field_total_outgoing_water_volum.und[0].value" ng-init="vm.data.water_supply[0].field_total_outgoing_water_volum.und[0].value=''" required ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/></div>
+          <div class="validation-messages">
+            <div  ng-show="vm.probetool.group_watersupply.field_total_outgoing_water_volum.$error.pattern">Please Enter A Numeric Value</div>
+            <div  ng-show="vm.showvalidationmsg && vm.probetool.group_watersupply.field_total_outgoing_water_volum.$error.required">
+              Please Enter Total Outgoing Water Volume
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="form-row">
+          <div class="form-col">
+              <label>Total Outgoing Water Volume<span class="required-field">*</span></label>
+              <div class="form-item"><input type="text" auto-next tabindex="24" name="field_total_outgoing_water_volum" ng-model="vm.data.water_supply[0].field_total_outgoing_water_volum.und[0].value" ng-init="vm.data.water_supply[0].field_total_outgoing_water_volum.und[0].value=''" required/></div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.probetool.group_watersupply.field_total_outgoing_water_volum.$error.required">Please Enter Total Outgoing Water Volume</div>
+              </div>
+          </div>
+          <div class="form-col"></div>
+      </div> -->
+    </div>
+    </ng-form>
+    <div class="accordion-footer padding">
+      <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.probetool.group_watersupply,4);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+    </div>
+  </accordion-item>
+  <accordion-item item-title="Value Stream" accordion-id="accordion-divider-5">
+    <ng-form name="vm.probetool.group_valuestream" ng-disabled="vm.data.checklist_basic_info.isFinalized">
+    <div class="form form-inline padding form-dark">
+      <fieldset>
+        <legend>Value Stream:</legend>
+        <ng-form name="vm.probetool.group_valuestream.form[$index]" ng-repeat="value_stream in vm.data.value_stream track by $index">
+        <div class="repeat-divider" >
+          <div class="form-row">
+            <div class="form-col" >
+              <label>Value Stream Name<span class="required-field">*</span></label>
+              <input auto-next type="text" ng-model="value_stream.field_stream_name.und[0].value" name="field_stream_name" required/>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.probetool.group_valuestream.form[$index].field_stream_name.$error.required">Please Enter Value Stream Name</div>
+              </div>
+            </div>
+            <div class="form-col" >
+              <label>Incoming Cost Per Volume Unit<span class="required-field">*</span></label>
+              <input auto-next type="text" required name="vs_field_incoming_cost_per_unit" ng-model="value_stream.field_incoming_cost_per_unit.und[0].value" id="vs_field_incoming_cost_per_unit" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+              <div class="validation-messages" ng-show="vm.probetool.group_valuestream.form[$index].vs_field_incoming_cost_per_unit.$error.pattern">Please Enter A Numeric Value
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.probetool.group_valuestream.form[$index].vs_field_incoming_cost_per_unit.$error.required">Please Enter Incoming Cost Per Unit</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col" >
+              <label>Outgoing Cost Per Volume Unit<span class="required-field">*</span></label>
+              <input auto-next="" type="text" required name="vs_field_outgoing_cost_per_unit" ng-model="value_stream.field_outgoing_cost_per_unit.und[0].value" id="vs_field_outgoing_cost_per_unit" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+              <div class="validation-messages" ng-show="vm.probetool.group_valuestream.form[$index].vs_field_outgoing_cost_per_unit.$error.pattern">Please Enter A Numeric Value
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.probetool.group_valuestream.form[$index].vs_field_outgoing_cost_per_unit.$error.required">Please Enter Outgoing Cost Per Unit</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Volume Units<span class="required-field">*</span></label>
+              <div class="form-item">
+                <selectize name="vs_field_water_unit" config="{ valueField: 'tid',
+                  labelField: 'name', placeholder : 'Select Volume Unit',
+                  maxItems: 1, searchField: ['name']}" options="vm.terms.volume" ng-model="value_stream.field_vs_volume_in_report.und[0].tid" auto-next id="vs_field_water_unit" ng-required="true">
+                </selectize>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.probetool.group_valuestream.form[$index].vs_field_water_unit.$error.required">Please Select Volume Unit</div>
+              </div>
+            </div>
+          </div>
+          <button ng-if="$index > 0" class="btn btn-danger btn-sm" ng-click="vm.deleteRepeat(vm.data.value_stream,$index)" ><span class="btn-icon-position icon-trash-o " > Delete</span></button>
+        </div>
+        </ng-form>
+        <button class="btn btn-primary btn-sm" ng-disabled="vm.probetool.group_valuestream.form[vm.data.value_stream.length-1].$invalid" ng-click="vm.addMore(vm.data.value_stream)" ><span class="btn-icon-position icon-plus " ></span> Add More</button>
+      </fieldset>
+    </div>
+    </ng-form>
+    <div class="accordion-footer padding">
+      <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.probetool.group_valuestream,-1);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+    </div>
+  </accordion-item>
+  <button  class="pull-right btn btn-primary" ng-click="vm.save(vm.data);" ng-disabled="vm.data.checklist_basic_info.isFinalized"><span ng-show="vm.saveButtonText == 'Saving'"  ><i class="icon-spinner"></i></span>{{ vm.saveButtonText }}</button>
+  <button class="pull-right btn btn-primary button-space" ng-disabled="!isConnected||vm.data.checklist_basic_info.isFinalized" ng-click="vm.submit(vm.data,vm.probetool)"><span ng-show="vm.submitButtonText == 'Submitting'"><i class="icon-spinner"></i></span>{{ vm.submitButtonText }}</button>
+</form>
+</accordion>

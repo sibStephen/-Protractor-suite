@@ -1,0 +1,1741 @@
+<ul id="progress">
+  <li>
+    <div class="node" ng-class="{ 'bg-green': vm.cipform.group_audit.$valid, 'bg-blue': vm.current==0&&vm.cipform.group_audit.$invalid, 'bg-grey': vm.cipform.group_audit.$invalid&&vm.current!=0}">
+      <span ng-if="vm.cipform.group_audit.$valid" class="status icon-check"></span>
+      <span ng-if="vm.cipform.group_audit.$invalid" class="status">1</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider" ng-class="{ 'bg-green': vm.cipform.group_audit.$valid, 'bg-white': vm.cipform.group_audit.$invalid }" id="accordion-divider-1"></div>
+  </li>
+  <li>
+    <div class="node" ng-class="{ 'bg-green': vm.cipform.group_customer.$valid, 'bg-blue': vm.cipform.group_customer.$invalid&&vm.current==1, 'bg-grey': vm.cipform.group_customer.$invalid&&vm.current!=1}">
+      <span ng-if="vm.cipform.group_customer.$valid" class="status icon-check"></span>
+      <span ng-if="vm.cipform.group_customer.$invalid" class="status">2</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider " ng-class="{ 'bg-green': vm.cipform.group_customer.$valid, 'bg-white': vm.cipform.group_customer.$invalid}" id="accordion-divider-2"></div>
+  </li>
+  <li>
+    <div class="node " ng-class="{ 'bg-green': vm.cipform.group_measuringunits.$valid, 'bg-blue': vm.cipform.group_measuringunits.$invalid&&vm.current==2, 'bg-grey': vm.cipform.group_measuringunits.$invalid&&vm.current!=2}">
+      <span ng-if="vm.cipform.group_measuringunits.$valid" class="status icon-check"></span>
+      <span ng-if="vm.cipform.group_measuringunits.$invalid" class="status">3</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider " ng-class="{ 'bg-green': vm.cipform.group_measuringunits.$valid, 'bg-white': vm.cipform.group_measuringunits.$invalid}" id="accordion-divider-3"></div>
+  </li>
+  <li>
+    <div class="node " ng-class="{ 'bg-green': vm.cipform.group_costbasis.$valid, 'bg-blue': vm.cipform.group_costbasis.$invalid&&vm.current==3, 'bg-grey': vm.cipform.group_costbasis.$invalid&&vm.current!=3}">
+      <span ng-if="vm.cipform.group_costbasis.$valid" class="status icon-check"></span>
+      <span ng-if="vm.cipform.group_costbasis.$invalid" class="status">4</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider " ng-class="{ 'bg-green': vm.cipform.group_costbasis.$valid, 'bg-white': vm.cipform.group_costbasis.$invalid}" id="accordion-divider-4"></div>
+  </li>
+  <li>
+    <div class="node " ng-class="{ 'bg-green': vm.cipform.group_quality.$valid, 'bg-blue': vm.cipform.group_quality.$invalid&&vm.current==4, 'bg-grey': vm.cipform.group_quality.$invalid&&vm.current!=4}">
+      <span ng-if="vm.cipform.group_quality.$valid" class="status icon-check"></span>
+      <span ng-if="vm.cipform.group_quality.$invalid" class="status">5</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider " ng-class="{ 'bg-green': vm.cipform.group_quality.$valid, 'bg-white': vm.cipform.group_quality.$invalid}" id="accordion-divider-5"></div>
+  </li>
+  <li>
+    <div class="node " ng-class="{ 'bg-green': vm.cipform.group_observation.$valid, 'bg-blue': vm.cipform.group_observation.$invalid&&vm.current==5, 'bg-grey': vm.cipform.group_observation.$invalid&&vm.current!=5}">
+      <span ng-if="vm.cipform.group_observation.$valid" class="status icon-check"></span>
+      <span ng-if="vm.cipform.group_observation.$invalid" class="status">6</span>
+    </div>
+  </li>
+  <li>
+    <div class="divider " ng-class="{ 'bg-green': vm.cipform.group_observation.$valid, 'bg-white': vm.cipform.group_observation.$invalid}" id="accordion-divider-6"></div>
+  </li>
+  <li>
+    <div class="node " ng-class="{ 'bg-green': vm.cipform.group_cipspecificques.$valid, 'bg-blue': vm.cipform.group_cipspecificques.$invalid&&vm.current==6, 'bg-grey': vm.cipform.group_cipspecificques.$invalid&&vm.current!=6}">
+      <span ng-if="vm.cipform.group_cipspecificques.$valid" class="status icon-check"></span>
+      <span ng-if="vm.cipform.group_cipspecificques.$invalid" class="status">7</span>
+    </div>
+  </li>
+</ul>
+<accordion icon-position="right" one-at-a-time="true" close-icon-class="icon-plus-square-o" open-icon-class="icon-minus-square-o">
+  <form name="vm.cipform" novalidate>
+    <accordion-item item-title="Audit Information" accordion-id="accordion-divider-1" open="true">
+      <ng-form name="vm.cipform.group_audit" ng-disabled="vm.data.checklist_basic_info.isFinalized">
+        <div class="form form-inline form-dark padding">
+          <div class="form-row">
+            <div class="form-col">
+              <label>Report Id<span class="required-field">*</span></label>
+              <div class="form-item"><input auto-next type="text" ng-model="vm.data.cip_tools_checklist[0].field_report_id.und[0].value" name="field_report_id" disabled=""  required/></div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_audit.field_report_id.$error.required">Please Enter Report Id</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Reporter Name<span class="required-field">*</span></label>
+              <div class="form-item"><input auto-next type="text" ng-model="vm.data.cip_tools_checklist[0].title" ng-init="vm.data.cip_tools_checklist[0].title=''" name="title" read-only-finalized required></div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_audit.title.$error.required">Please Enter Reporter Name</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Reporter Location</label>
+              <div class="form-item"><input name="field_reporter_location" auto-next ng-model="vm.data.cip_tools_checklist[0].field_reporter_location.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_reporter_location.und[0].value=''" type="text" read-only-finalized />
+                </div>
+            </div>
+            <div class="form-col">
+              <label>Report Date<span class="required-field">*</span></label>
+              <div class="form-item"><input type="text" ng-model="vm.data.cip_tools_checklist[0].field_audit_date.und[0].value"  ng-init="vm.data.cip_tools_checklist[0].field_audit_date.und[0].value=vm.todaysdate" name="field_audit_date" ng-required="true" uib-datepicker-popup="dd/MM/yyyy"  ng-readonly='true' ng-focus="vm.datepickeropen=true" datepicker-options="vm.datepickerOption" datepicker-localdate is-open='vm.datepickeropen'>
+              <button ng-click="vm.datepickeropen=!vm.datepickeropen" class="btn btn-sm btn-primary rightoftextbox"><span class="icon-calendar"></span></button>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_audit.field_audit_date.$invalid">Please Enter Report Date</div>
+              </div>
+            </div>
+          </div>
+            <div class="form-row">
+
+              <div class="form-col">
+                <label>Business Unit<span class="required-field">*</span></label>
+                <div class="form-item">
+                    <selectize ng-init="vm.data.cip_tools_checklist[0].field_business_unit.und[0].tid='0'" ng-required="true" name="businessunit" auto-next  ng-model="vm.data.cip_tools_checklist[0].field_business_unit.und[0].tid" options="vm.businessUnitData" config="vm.businessUnitConfig"></selectize>
+                </div>
+                <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_audit.businessunit.$error.required">Please Select Business Unit</div>
+                </div>
+              </div>
+              <div class="form-col" ng-show="vm.data.cip_tools_checklist[0].field_business_unit.und[0].tid!=0">
+                <label>Sector<span class="required-field">*</span></label>
+                <div class="form-item">
+                  <selectize config="vm.sectorConfig" ng-required="true" auto-next name="sector" ng-init="vm.data.cip_tools_checklist[0].field_sector.und[0].tid='0'" options="vm.sectorData"
+                     ng-model="vm.data.cip_tools_checklist[0].field_sector.und[0].tid" >
+                  </selectize>
+                </div>
+                <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_audit.sector.$error.required">Please Select Sector</div>
+                </div>
+              </div>
+              <div class="form-col" ng-show="vm.data.cip_tools_checklist[0].field_sector.und[0].tid!=0">
+                <label>Sub Sector<span class="required-field">*</span></label>
+                <div class="form-item">
+                  <selectize config="vm.subSectorConfig" ng-required="true"  auto-next name="subsector" ng-init="vm.data.cip_tools_checklist[0].field_sub_sector.und[0].tid='0'" options="vm.subSectorData"
+                     ng-model="vm.data.cip_tools_checklist[0].field_sub_sector.und[0].tid" >
+                  </selectize>
+                </div>
+                <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_audit.subsector.$error.required">Please Select Sub Sector</div>
+                </div>
+              </div>
+            </div>
+            <ng-form class="form-row departmentRepeat" name="vm.cipform.department[$index]" ng-show="vm.data.cip_tools_checklist[0].field_sub_sector.und[0].tid!=0" ng-repeat="department in vm.data.department track by $index" ng-disabled="vm.data.checklist_basic_info.isFinalized">
+              <div class="form-col">
+                <label>Department<span class="required-field">*</span></label>
+                <div class="form-item">
+                    <selectize name="department" ng-model="department.field_departments.und[0].tid"  auto-next options="vm.departmentArr[$index]" ng-change="vm.change(department.field_departments.und[0].tid, '{{department.field_departments.und[0].tid}}')" ng-required="true" config="vm.departmentConfig"></selectize>
+                </div>
+                <div class="validation-messages" ng-show="vm.cipform.department[$index].department.$invalid && vm.showvalidationmsg">
+                  <div>Please Select Department</div>
+                </div>
+              </div>
+              <div class="form-col" ng-show="department.field_departments.und[0].tid!=0">
+                <label>Application Method<span class="required-field">*</span></label>
+                <div class="form-item">
+                      <div class="select" multiple>
+                        <select multiple="multiple" required="required"  auto-next ng-model="department.field_application_method.und" data-ng-options="applicationMethod.name for applicationMethod in vm.applicationMethodData[department.field_departments.und[0].tid] track by applicationMethod.tid" >
+                        </select>
+                    </div>
+                </div>
+                <div class="validation-messages" ng-show="department.field_application_method.und.length==0 && vm.showvalidationmsg ">
+                  <div>Please Select Application Method</div>
+                </div>
+              </div>
+              <div class="deleteBtn">
+                  <button  ng-if="$index > 0" class="btn btn-danger btn-sm " ng-click="vm.deleteRepeat(vm.data.department,$index);vm.filteredDepartment(vm.departmentData,department.field_departments.und[0].tid);"><span class="btn-icon-position icon-trash-o"> Delete</span></button>
+              </div>
+            </ng-form>
+            <div class="clearfix">
+              <button ng-show="vm.departmentData.length" ng-disabled="vm.departmentData.length==vm.data.department.length || vm.cipform.department[vm.data.department.length-1].$invalid" class="btn btn-primary btn-sm" ng-click="vm.addMore(vm.data.department,{});vm.filteredDepartment(vm.departmentData);"><span class="btn-icon-position icon-plus"></span>&nbsp;&nbsp;Add More</button>
+              <button ng-show="vm.data.cip_tools_checklist[0].field_sub_sector.und[0].tid&&vm.data.cip_tools_checklist[0].field_sub_sector.und[0].tid!=0" ng-disabled="!isConnected" class="btn btn-primary btn-sm pull-right" ng-click="vm.addTerm('app')"><span class="btn-icon-position icon-ticket"></span>Add Application Method</button>
+              <button ng-show="vm.data.cip_tools_checklist[0].field_sub_sector.und[0].tid&&vm.data.cip_tools_checklist[0].field_sub_sector.und[0].tid!=0" ng-disabled="!isConnected" class="btn btn-primary btn-sm pull-right" ng-click="vm.addTerm('department')"><span class="btn-icon-position icon-ticket"> </span>Add Department</button>
+              <button ng-show="vm.departmentData.length" ng-disabled="!isConnected||vm.probetool.department[vm.data.department.length-1].$invalid" class="btn btn-primary btn-sm pull-right" ng-click="vm.applyLabels()"><span class="btn-icon-position icon-ticket"></span>Apply Labels</button>
+            </div>
+        </div>
+      </ng-form>
+      <div class="accordion-footer padding">
+        <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.cipform.group_costbasis,1);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+      </div>
+    </accordion-item>
+    <accordion-item item-title="Customer Information" accordion-id="accordion-divider-2">
+      <ng-form name="vm.cipform.group_customer" ng-disabled="vm.data.checklist_basic_info.isFinalized" novalidate>
+        <div class="padding">
+          <div class="form form-inline form-dark">
+            <div class="form-row">
+              <div class="form-col">
+                <label>Customer Number<span class="required-field">*</span></label>
+                <div class="form-item">
+                  <input auto-next name="field_customer_number" ng-model="vm.data.customer_information[0].field_customer_number.und[0].value" ng-init="vm.data.customer_information[0].field_customer_number.und[0].value=''" type="text" required />
+                </div>
+                <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_customer.field_customer_number.$error.required">Please Enter Customer Number</div>
+                </div>
+              </div>
+              <div class="form-col">
+                <label>Customer Name<span class="required-field">*</span></label>
+                <div class="form-item"><input auto-next name="field_customer_name" ng-model="vm.data.customer_information[0].title" ng-init="vm.data.customer_information[0].title=''" type="text" required /></div>
+                <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_customer.field_customer_name.$error.required">Please Enter Customer Name</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-col">
+                <label>Customer Group Name<span class="required-field">*</span></label>
+                <div class="form-item"><input type="text"  auto-next name="field_group_name" ng-model="vm.data.customer_information[0].field_group_name.und[0].value" ng-init="vm.data.customer_information[0].field_group_name.und[0].value=''" type="text" required /></div>
+                <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_customer.field_group_name.$error.required">Please Enter Customer Group Name</div>
+                </div>
+              </div>
+              <div class="form-col">
+                <label>Customer Contact<span class="required-field">*</span></label>
+                <div class="form-item"><input type="text" auto-next name="field_customer_contact" ng-model="vm.data.customer_information[0].field_customer_contact.und[0].value" ng-init="vm.data.customer_information[0].field_customer_contact.und[0].value=''" type="text" required /></div>
+                <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_customer.field_customer_contact.$error.required">Please Enter Customer Contact</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-col">
+                <label>Customer Role</label>
+                <div class="form-item"><input type="text" auto-next ng-model="vm.data.customer_information[0].field_customer_role.und[0].value" ng-init="vm.data.customer_information[0].field_customer_role.und[0].value=''" name="field_customer_role" /></div>
+              </div>
+              <div class="form-col">
+                <label>Postal/Zip Code</label>
+                <div class="form-item"><input type="text" auto-next name="field_postal_code" ng-model="vm.data.customer_information[0].field_postal_code.und[0].value" ng-init="vm.data.customer_information[0].field_postal_code.und[0].value=''"/></div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-col">
+                <label>Contact Phone Number</label>
+                <div class="form-item"><input type="text" auto-next ng-model="vm.data.customer_information[0].field_contact_phone_number.und[0].value" ng-init="vm.data.customer_information[0].field_contact_phone_number.und[0].value=''" name="field_contact_phone_number" /></div>
+              </div>
+              <div class="form-col">
+                <label>Contact Email</label>
+                <div class="form-item"><input type="email" auto-next name="field_contact_email" ng-model="vm.data.customer_information[0].field_contact_email.und[0].value" ng-init="vm.data.customer_information[0].field_contact_email.und[0].value=''"/></div>
+                <div class="validation-messages" ng-show="vm.cipform.group_customer.field_contact_email.$touched">
+                  <div ng-show="vm.cipform.group_customer.field_contact_email.$error.email">
+                  Please Enter A Valid Email Address</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-col">
+                <label>Location</label>
+                <div class="form-item"><input type="text" auto-next name="field_location" ng-model="vm.data.customer_information[0].field_location.und[0].value" ng-init="vm.data.customer_information[0].field_location.und[0].value=''"/></div>
+              </div>
+              <div class="form-col">
+                <label>Country<span class="required-field">*</span></label>
+                <div class="form-item">
+                  <selectize name="field_country" class="select" config= "{valueField: 'name',
+                    labelField: 'name', placeholder : 'Select A Country',
+                    maxItems: 1,searchField: ['name']}"  options="vm.countries" ng-model="vm.data.customer_information[0].field_country.und[0].value" ng-init="vm.data.customer_information[0].field_country.und[0].value=''"  auto-next id="field_country1"  required >
+                  </selectize>
+                </div>
+                <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_customer.field_country.$error.required">Please Select Country Name</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-col">
+                <label>Currency<span class="required-field">*</span></label>
+                <div class="form-item">
+                  <selectize name="field_local_currency" config="{ valueField: 'tid',
+                    labelField: 'name', placeholder : 'Select A Currency',
+                    maxItems: 1, searchField: ['name']}" options="vm.terms.local_currency" ng-model="vm.data.customer_information[0].field_local_currency.und[0].tid" auto-next id="field_local_currency" required>
+                  </selectize>
+                </div>
+                <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_customer.field_local_currency.$error.required">Please Select Currency</div>
+                </div>
+              </div>
+              <div class="form-col"></div>
+            </div>
+          </div>
+        </div>
+      </ng-form>
+      <div class="accordion-footer padding">
+        <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.cipform.group_costbasis,2);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+      </div>
+    </accordion-item>
+    <accordion-item item-title="Measuring Units" accordion-id="accordion-divider-3">
+      <ng-form name="vm.cipform.group_measuringunits" ng-disabled="vm.data.checklist_basic_info.isFinalized" novalidate>
+        <div class=" padding form form-inline form-dark">
+          <div class="form-row">
+            <div class="form-col">
+              <label>Currency In Report</label>
+              <div class="form-item">
+              <!--  <selectize config="{create: true, valueField: 'code', labelField: 'name',delimiter: '|', placeholder : 'select Currency', maxItems: 1}" options="vm.terms.local_currency.name" auto-next ng-model="vm.data.cip_tools_checklist[0].field_currency_in_report.und[0].tid">
+                </selectize> -->
+                <selectize name="field_local_currency" auto-next config="{ valueField: 'tid',
+                  labelField: 'name', placeholder : 'Select  Currency In Report ',
+                  maxItems: 1, searchField: ['name']}"  ng-init="vm.data.cip_tools_checklist[0].field_currency_in_report.und[0].tid='0'" options="vm.terms.local_currency" ng-model="vm.data.cip_tools_checklist[0].field_currency_in_report.und[0].tid" auto-next id="field_local_currency" >
+                </selectize>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Exchange Rate</label>
+              <div class="form-item"><input type="text" auto-next ng-model="vm.data.cip_tools_checklist[0].field_exchange_rate.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_exchange_rate.und[0].value=''" name="field_exchange_rate" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+              <div class="validation-messages" ng-show="vm.cipform.group_measuringunits.field_exchange_rate.$error.pattern">Please Enter A Numeric Value</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Volume<span class="required-field">*</span></label>
+              <div class="form-item">
+              <selectize name="field_volume" config="{ valueField: 'tid', labelField: 'name', placeholder : 'Select  Volume ',
+                maxItems: 1, searchField: ['name']}"  ng-init="vm.data.cip_tools_checklist[0].field_volume.und[0].tid='0'" options="vm.terms.volume" ng-model="vm.data.cip_tools_checklist[0].field_volume.und[0].tid" auto-next ng-required="true">
+              </selectize>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.data.cip_tools_checklist[0].field_volume.und[0].tid=='0'">Please Select Volume</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Volume In Report</label>
+              <div class="form-item">
+              <selectize name="field_volume"  config="{ valueField: 'tid', labelField: 'name', placeholder : 'Select  Volume In report',maxItems: 1, searchField: ['name']}"  ng-init="vm.data.cip_tools_checklist[0].field_volume_in_report.und[0].tid='0'" options="vm.terms.volume" ng-model="vm.data.cip_tools_checklist[0].field_volume_in_report.und[0].tid" auto-next>
+              </selectize>
+                <label for="dropdown" class="select"></label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Weight<span class="required-field">*</span></label>
+              <div class="form-item">
+              <selectize name="field_weight"  config="{ valueField: 'tid', labelField: 'name', placeholder : 'Select A Weight',
+              maxItems: 1, searchField: ['name']}"  ng-init="vm.data.cip_tools_checklist[0].field_weight.und[0].tid='0'" options="vm.terms.weight" ng-model="vm.data.cip_tools_checklist[0].field_weight.und[0].tid" auto-next required>
+              </selectize>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.data.cip_tools_checklist[0].field_weight.und[0].tid=='0'">Please Select Weight</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Temperature<span class="required-field">*</span></label>
+              <div class="form-item">
+              <selectize name="field_temperature"  config="{ valueField: 'tid', labelField: 'name', placeholder : 'Select Temperature',
+              maxItems: 1, searchField: ['name']}"  ng-init="vm.data.cip_tools_checklist[0].field_temperature.und[0].tid='0'" options="vm.terms.temperature" ng-model="vm.data.cip_tools_checklist[0].field_temperature.und[0].tid" auto-next required>
+              </selectize>
+                <label for="dropdown" class="select"></label>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.data.cip_tools_checklist[0].field_temperature.und[0].tid=='0'">Please Select Temperature</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Surface<span class="required-field">*</span></label>
+              <div class="form-item">
+              <selectize name="field_surface"  config="{ valueField: 'tid', labelField: 'name', placeholder : 'Select Surface',
+              maxItems: 1, searchField: ['name']}"  ng-init="vm.data.cip_tools_checklist[0].field_surface.und[0].tid='0'" options="vm.terms.surface" ng-model="vm.data.cip_tools_checklist[0].field_surface.und[0].tid" auto-next required>
+              </selectize>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.data.cip_tools_checklist[0].field_surface.und[0].tid=='0'">Please Select Surface</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Surface In Report</label>
+              <div class="form-item">
+              <selectize config="{ valueField: 'tid', labelField: 'name', placeholder : 'Select Surface In Report',
+              maxItems: 1, searchField: ['name']}"  ng-init="vm.data.cip_tools_checklist[0].field_surface_in_report.und[0].tid='0'" options="vm.terms.surface" ng-model="vm.data.cip_tools_checklist[0].field_surface_in_report.und[0].tid" auto-next>
+              </selectize>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Pressure<span class="required-field">*</span></label>
+              <div class="form-item">
+              <selectize config="{ valueField: 'tid', labelField: 'name', placeholder : 'Select Pressure',
+              maxItems: 1, searchField: ['name']}"  ng-init="vm.data.cip_tools_checklist[0].field_pressure.und[0].tid='0'" options="vm.terms.pressure" ng-model="vm.data.cip_tools_checklist[0].field_pressure.und[0].tid" auto-next required>
+              </selectize>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.data.cip_tools_checklist[0].field_pressure.und[0].tid=='0'">Please Select Pressure</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Concentration<span class="required-field">*</span></label>
+              <div class="form-item">
+              <selectize name="field_concentration" config="{ valueField: 'tid', labelField: 'name', placeholder : 'Select Concentration',
+              maxItems: 1, searchField: ['name']}"  ng-init="vm.data.cip_tools_checklist[0].field_concentration.und[0].tid='0'" options="vm.terms.concentration" ng-model="vm.data.cip_tools_checklist[0].field_concentration.und[0].tid" auto-next required>
+              </selectize>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.data.cip_tools_checklist[0].field_concentration.und[0].tid=='0'">Please Select Concentration</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-form>
+      <div class="accordion-footer padding">
+      <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.cipform.group_costbasis,3);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+      </div>
+    </accordion-item>
+    <accordion-item item-title="Cost Basis" accordion-id="accordion-divider-4">
+      <ng-form name="vm.cipform.group_costbasis" ng-disabled="vm.data.checklist_basic_info.isFinalized">
+        <div class="padding form form-inline form-dark">
+          <div class="form-row">
+            <div class="form-col">
+              <label>Salary Rate Cleaning Operator - Normal (Hourly)</label>
+              <div class="form-item"><input type="text" auto-next name="field_slry_rate_cleaning_normal" ng-model="vm.data.cip_tools_checklist[0].field_slry_rate_cleaning_normal.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_slry_rate_cleaning_normal.und[0].value=''" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+                <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_slry_rate_cleaning_normal.$error.pattern">Please Enter A Numeric Value</div>
+            </div>
+            <div class="form-col">
+              <label>Salary Rate Cleaning Operator - Night (Hourly)</label>
+              <div class="form-item"><input type="text" auto-next name="field_slry_rate_cleaning_night" ng-model="vm.data.cip_tools_checklist[0].field_slry_rate_cleaning_night.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_slry_rate_cleaning_night.und[0].value=''" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+                <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_slry_rate_cleaning_night.$error.pattern">Please Enter A Numeric Value</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Salary Rate Cleaning Operator - Overtime (Hourly)</label>
+              <div class="form-item"><input type="text" auto-next name="field_slry_rate_cleaning_overtim" ng-model="vm.data.cip_tools_checklist[0].field_slry_rate_cleaning_overtim.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_slry_rate_cleaning_overtim.und[0].value=''" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+                <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_slry_rate_cleaning_overtim.$error.pattern">Please Enter A Numeric Value</div>
+            </div>
+            <div class="form-col">
+              <label>Cost Of Incoming Water Per Volume Selected In Previous Field</label>
+              <div class="form-item"><input type="text" auto-next name="field_cost_of_incoming_water" ng-model="vm.data.cip_tools_checklist[0].field_cost_of_incoming_water.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_cost_of_incoming_water.und[0].value=''" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+            <!--  <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_cost_of_incoming_water.$touched && vm.data.cip_tools_checklist[0].field_cost_of_incoming_water.und[0].value.length==0">Please Enter Cost Of Incoming Water</div> -->
+                <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_cost_of_incoming_water.$error.pattern">Please Enter A Numeric Value</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Cost Of Waste Water Per Volume Selected In Previous Field</label>
+              <div class="form-item"><input type="text" auto-next name="field_cost_of_waste_water" ng-model="vm.data.cip_tools_checklist[0].field_cost_of_waste_water.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_cost_of_waste_water.und[0].value=''" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+              <!-- <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_cost_of_waste_water.$touched && vm.data.cip_tools_checklist[0].field_cost_of_waste_water.und[0].value.length==0">Please Enter Cost Of Waste Water Per Volume Selected In Previous Field</div> -->
+              <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_cost_of_waste_water.$error.pattern">Please Enter A Numeric Value</div>
+            </div>
+            <div class="form-col">
+              <label>Cost Of Steam Per Volume Selected In Previous Field</label>
+              <div class="form-item"><input type="text" auto-next name="field_cost_of_steam" ng-model="vm.data.cip_tools_checklist[0].field_cost_of_steam.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_cost_of_steam.und[0].value=''" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+              <!-- <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_cost_of_steam.$touched && vm.data.cip_tools_checklist[0].field_cost_of_steam.und[0].value.length==0">Please Enter Cost Of Steam Per Volume Selected In Previous Field
+              </div> -->
+                <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_cost_of_steam.$error.pattern">Please Enter A Numeric Value</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Cost Of Electricity Per KWh</label>
+              <div class="form-item"><input type="text" auto-next name="field_cost_of_electricity_per_kw" ng-model="vm.data.cip_tools_checklist[0].field_cost_of_electricity_per_kw.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_cost_of_electricity_per_kw.und[0].value=''" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+              <!-- <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_cost_of_electricity_per_kw.$touched && vm.data.cip_tools_checklist[0].field_cost_of_electricity_per_kw.und[0].value.length==0">
+              Please Enter Cost Of Electricity Per KWh
+              </div> -->
+                <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_cost_of_electricity_per_kw.$error.pattern">Please Enter A Numeric Value</div>
+              </div>
+            <div class="form-col">
+              <label>Cost Of Air Per Volume Selected In Previous Field</label>
+              <div class="form-item"><input type="text" auto-next name="field_cost_of_air_per_volume" ng-model="vm.data.cip_tools_checklist[0].field_cost_of_air_per_volume.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_cost_of_air_per_volume.und[0].value=''" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /></div>
+              <!-- <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_cost_of_air_per_volume.$touched && vm.data.cip_tools_checklist[0].field_cost_of_air_per_volume.und[0].value.length==0">
+              Please Enter Cost Of Electricity Per KWh
+              </div> -->
+                <div class="validation-messages"  ng-show="vm.cipform.group_costbasis.field_cost_of_air_per_volume.$error.pattern">Please Enter A Numeric Value </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Value Of 1 hr Production Time</label>
+              <div class="form-item"><input type="text" auto-next name="field_value_of_1_hr_prod_time" ng-model="vm.data.cip_tools_checklist[0].field_value_of_1_hr_prod_time.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_value_of_1_hr_prod_time.und[0].value=''" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /> </div>
+              <!-- <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_value_of_1_hr_prod_time.$touched && vm.data.cip_tools_checklist[0].field_value_of_1_hr_prod_time.und[0].value.length==0">
+              Please Enter Value Of 1 hr Production Time
+              </div> -->
+                <div class="validation-messages" ng-show="vm.cipform.group_costbasis.field_value_of_1_hr_prod_time.$error.pattern">Please Enter A Numeric Value</div>
+              </div>
+            <div class="form-col">
+              <label>What Is The % Of Sickness Leave Of Cleaning Crew?</label>
+              <div class="form-item"><input type="text"  auto-next name="field_perc_sickness_leave_crew" ng-model="vm.data.cip_tools_checklist[0].field_perc_sickness_leave_crew.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_perc_sickness_leave_crew.und[0].value=''" ng-pattern="/^([0-9]|[1-9][0-9]|10[0])$/" /></div>
+              <div class="validation-messages">
+              <div  ng-show="vm.cipform.group_costbasis.field_perc_sickness_leave_crew.$error.pattern">
+                Please Enter Number Less Than Or Equal to 100
+              </div>
+              <div ng-show="vm.cipform.group_costbasis.field_perc_sickness_leave_crew.$error.number">
+                Please Enter A Numeric Value
+              </div>
+              </div>
+              <!-- <div class="validation-messages" ng-show="vm.data.cip_tools_checklist[0].field_perc_sickness_leave_crew.und[0].value.length==0 && vm.cipform.group_costbasis.field_perc_sickness_leave_crew.$touched">
+                Please Enter in Number Format only
+              </div> -->
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Is Cleaning Time A Limiting Factor For Production</label>
+              <div>
+              <div class="radio hidden">
+                  <input type="radio" ng-model="vm.data.cip_tools_checklist[0].field_is_cleaning_time_a_limit1.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_is_cleaning_time_a_limit1.und[0]=''" name="field_is_cleaning_time_a_limit1" id="field_is_cleaning_time_a_limit0" value="" />
+                  <label for="field_is_cleaning_time_a_limit0"> N/A</label>
+                </div>
+                <div class="radio">
+                  <input type="radio" ng-model="vm.data.cip_tools_checklist[0].field_is_cleaning_time_a_limit1.und[0].value" name="field_is_cleaning_time_a_limit1" id="field_is_cleaning_time_a_limit1" value="0" />
+                  <label for="field_is_cleaning_time_a_limit1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_is_cleaning_time_a_limit2" ng-model="vm.data.cip_tools_checklist[0].field_is_cleaning_time_a_limit1.und[0].value" name="field_is_cleaning_time_a_limit1" value="1" type="radio" />
+                  <label for="field_is_cleaning_time_a_limit2">Y</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <fieldset>
+                <legend>Cleaning Chemical Product Name:</legend>
+                <ng-form ng-cloak name="vm.cipform.group_costbasis.cleaning_chemical_product[$index]" ng-repeat="cleaning_chemical_product in vm.data.cleaning_chemical_product track by $index" ng-disabled="vm.data.checklist_basic_info.isFinalized" >
+                <div class="form-row add-more-divider">
+                  <div class="form-col">
+
+                    Name <input auto-next type="text" ng-model="cleaning_chemical_product.title" name="title" />
+                  </div>
+                  <div class="form-col">
+                    Cost <input  auto-next type="text" name="cost" ng-model="cleaning_chemical_product.field_cost.und[0].value" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+                    <div class="validation-messages" ng-show="vm.cipform.group_costbasis.cleaning_chemical_product[$index].cost.$touched && cleaning_chemical_product.field_cost.und[0].value.length==0">
+                      Please Enter Cost
+                    </div>
+                    <div class="validation-messages" ng-show="vm.cipform.group_costbasis.cleaning_chemical_product[$index].cost.$error.pattern">Please Enter A Numeric Value</div>
+                  </div>
+                   <div class="form-col">
+                    Unit <input  auto-next type="text" name="unit" ng-model="cleaning_chemical_product.field_unit.und[0].value" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"  />
+                    <!-- <div class="validation-messages" ng-show="vm.cipform.group_costbasis.cleaning_chemical_product[$index].unit.$touched && cleaning_chemical_product.field_unit.und[0].value.length==0">
+                      Please Enter unit
+                    </div> -->
+                    <div class="validation-messages" ng-show="vm.cipform.group_costbasis.cleaning_chemical_product[$index].unit.$error.pattern">Please Enter A Numeric Value</div>
+                  </div>
+                  <div class="form-col">
+                    <button ng-if="$index > 0" class="btn btn-danger btn-sm probe-btn" ng-click="vm.deleteRepeat(vm.data.cleaning_chemical_product,$index)"><span class="btn-icon-position icon-trash-o " > Delete</span></button>
+                  </div>
+                </div>
+                </ng-form>
+                <button class="btn btn-primary btn-sm" ng-click="vm.addMore(vm.data.cleaning_chemical_product)"><span class="btn-icon-position icon-plus "></span>  &nbsp;&nbsp;Add More</button>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </ng-form>
+      <div class="accordion-footer padding">
+        <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.cipform.group_costbasis,4);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+      </div>
+    </accordion-item>
+    <accordion-item item-title="Quality" accordion-id="accordion-divider-5">
+      <ng-form name="vm.cipform.group_quality" ng-disabled="vm.data.checklist_basic_info.isFinalized" novalidate>
+        <div class="padding form form-inline form-dark">
+          <div class="form-row">
+            <div class="form-col">
+              <label>What Quality Systems Are In Place?<span class="required-field">*</span></label>
+              <div>
+                <div class="select" multiple>
+                  <select multiple="multiple" auto-next ng-model="vm.data.cip_tools_checklist[0].field_quality_systems.und" ng-init="vm.data.cip_tools_checklist[0].field_quality_systems.und=''" data-ng-options="quality_system.name for quality_system in vm.terms.quality_systems track by quality_system.tid" required="" >
+                  </select>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.data.cip_tools_checklist[0].field_quality_systems.und.length==0">Please Select Quality</div>
+              </div>
+            </div>
+            <!-- According to Gitlab Issue25 this field has been disabled , please uncomment this field if wanted this field-->
+            <!-- <div class="form-col">
+              <label>What Is The Water Hardness Title?<span class="required-field">*</span></label>
+              <div class="form-item">
+                <input name="title" auto-next type="text" ng-model="vm.data.water_hardness[0].title" ng-init="vm.data.water_hardness[0].title=''" required />
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.title.$error.required">Please Enter What Is The Water Hardness Title?</div>
+              </div>
+            </div> -->
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>What Is The Water Hardness Value?<span class="required-field">*</span></label>
+              <div class="form-item">
+                <input type="text" name="field_water_hardness_value" auto-next type="text" ng-model="vm.data.water_hardness[0].field_water_hardness_value.und[0].value" ng-init="vm.data.water_hardness[0].field_water_hardness_value.und[0].value=''" required ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+              <div ng-show="vm.cipform.group_quality.field_water_hardness_value.$error.required">Please Enter Hardness Value</div>
+              </div>
+              <div class="validation-messages" ng-show="vm.cipform.group_quality.field_water_hardness_value.$error.pattern">Please Enter A Numeric Value </div>
+            </div>
+            <div class="form-col">
+              <label>What Is The Water Hardness Unit?<span class="required-field">*</span></label>
+              <div class="form-item">
+                <input name="field_water_hardness_unit" auto-next type="text" ng-model="vm.data.water_hardness[0].field_water_hardness_unit.und[0].value" ng-init="vm.data.water_hardness[0].field_water_hardness_unit.und[0].value=''" required />
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_water_hardness_unit.$error.required">Please Enter Hardness Unit</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>How Is The Water Micro Quality?<span class="required-field">*</span></label>
+              <div class="form-item">
+              <selectize id="field_water_micro_quality"  name="field_water_micro_quality"  config= "{valueField: 'tid',
+                labelField: 'name', placeholder : 'Select Water Micro Quality',
+                maxItems: 1,searchField: ['name']}"  options="vm.terms.water_micro_quality" ng-model="vm.data.cip_tools_checklist[0].field_water_micro_quality.und[0].tid"  auto-next   required=""  ng-init="vm.data.cip_tools_checklist[0].field_water_micro_quality.und[0].tid='0'">
+              </selectize>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.data.cip_tools_checklist[0].field_water_micro_quality.und[0].tid=='0'">Please Select How Is The Water Micro Quality</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Is water Quality Monitored?<span class="required-field">*</span></label>
+              <div>
+                <div class="radio hidden">
+                  <input name="field_is_water_quality_monitored" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_is_water_quality_monitored.und[0]" id="field_is_water_quality_monitored10" ng-init="vm.data.cip_tools_checklist[0].field_is_water_quality_monitored.und[0]=''" value="0" required/>
+                  <label for="field_is_water_quality_monitored10"> N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_is_water_quality_monitored" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_is_water_quality_monitored.und[0].value" id="field_is_water_quality_monitored11" value="0" required/>
+                  <label for="field_is_water_quality_monitored11"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_is_water_quality_monitored22" name="field_is_water_quality_monitored" ng-model="vm.data.cip_tools_checklist[0].field_is_water_quality_monitored.und[0].value" type="radio" value="1" required/>
+                  <label for="field_is_water_quality_monitored22">Y</label>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_is_water_quality_monitored.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>What Is The Sampling Frequency?<span class="required-field">*</span></label>
+              <div class="form-item">
+                <input type="text" auto-next name="field_sampling_frequency" ng-model="vm.data.cip_tools_checklist[0].field_sampling_frequency.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_sampling_frequency.und[0].value=''" required/>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_sampling_frequency.$error.required">Please Enter sampling frequency</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Reported Lost time Due To Injuries/Year?<span class="required-field">*</span></label>
+              <div class="form-item"><input type="text" auto-next name="field_lost_time_due_to_injuries" ng-model="vm.data.cip_tools_checklist[0].field_lost_time_due_to_injuries.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_lost_time_due_to_injuries.und[0].value=''" required/></div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_lost_time_due_to_injuries.$error.required">Please Enter Reported Lost Time Due To Injuries/Year
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Are Operators Trained On A Yearly Base On Chemical Safety And Handling?<span class="required-field">*</span></label>
+              <div>
+                <div class="radio hidden">
+                  <input name="field_are_operators_trained_on_a" type="radio" id="field_are_operators_trained_on_a0" ng-model="vm.data.cip_tools_checklist[0].field_are_operators_trained_on_a.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_operators_trained_on_a.und[0]=''" value="" required />
+                  <label for="field_are_operators_trained_on_a0"> N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_operators_trained_on_a" type="radio" id="field_are_operators_trained_on_a1" ng-model="vm.data.cip_tools_checklist[0].field_are_operators_trained_on_a.und[0].value" value="0" required />
+                  <label for="field_are_operators_trained_on_a1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_operators_trained_on_a2" name="field_are_operators_trained_on_a" ng-model="vm.data.cip_tools_checklist[0].field_are_operators_trained_on_a.und[0].value" type="radio" value="1" required />
+                  <label for="field_are_operators_trained_on_a2" >Y</label>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_are_operators_trained_on_a.$error.required">Please Select An Option
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Time Spent On Training/Operator/Year?<span class="required-field">*</span></label>
+              <div class="form-item"><input type="text" auto-next name="field_time_spend_on_training_ope" ng-model="vm.data.cip_tools_checklist[0].field_time_spend_on_training_ope.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_time_spend_on_training_ope.und[0].value=''" required=""/></div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_time_spend_on_training_ope.$error.required">Please Enter Reported Lost Time</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Required Hygiene Standard For Surfaces?<span class="required-field">*</span></label>
+              <div class="form-item"><input type="text" name="field_required_hygiene_standard_" ng-model="vm.data.cip_tools_checklist[0].field_required_hygiene_standard_.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_required_hygiene_standard_.und[0].value=''" auto-next required=""/></div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_required_hygiene_standard_.$error.required">Please Enter Required Hygiene Standard For Surfaces</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Are There Environmental Restrictions For Waste Water?<span class="required-field">*</span></label>
+              <div class="form-item"><input type="text" auto-next ng-model="vm.data.cip_tools_checklist[0].field_are_there_environmental_re.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_are_there_environmental_re.und[0].value=''" name="field_are_there_environmental_re" required=""/></div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_are_there_environmental_re.$error.required">Please Enter Are there Environmental Restrictions For Waste Water</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Are Chemical Stored In A Separate Room In Correct Conditions?<span class="required-field">*</span></label>
+              <div>
+                <div class="radio hidden">
+                  <input name="field_are_chemical_stored_in_a_1" type="radio" id="field_are_chemical_stored_in_a_10" ng-model="vm.data.cip_tools_checklist[0].field_are_chemical_stored_in_a_1.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_chemical_stored_in_a_1.und[0]=''" value="" required />
+                  <label for="field_are_chemical_stored_in_a_10"> N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_chemical_stored_in_a_1" type="radio" id="field_are_chemical_stored_in_a_11" ng-model="vm.data.cip_tools_checklist[0].field_are_chemical_stored_in_a_1.und[0].value" value="0" required />
+                  <label for="field_are_chemical_stored_in_a_11"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_chemical_stored_in_a_12" name="field_are_chemical_stored_in_a_1" ng-model="vm.data.cip_tools_checklist[0].field_are_chemical_stored_in_a_1.und[0].value" type="radio" value="1" required />
+                  <label for="field_are_chemical_stored_in_a_12" >Y</label>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_are_chemical_stored_in_a_1.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Are Updated PIS and SDS’s Available For All Chemicals Present At The Worksite And In The Storage Rooms<span class="required-field">*</span></label>
+              <!-- <div class="form-item"><input type="text" ng-model="vm.data.cip_tools_checklist[0].field_are_updated_pis_and_sds_s1.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_are_updated_pis_and_sds_s1.und[0].value=''" name="field_are_updated_pis_and_sds_s1" ng-pattern="/^[0-9]{1,7}(\.[0-9]+)?$/" ng-required="vm.showvalidationmsg"/></div> -->
+              <div>
+                <div class="radio hidden">
+                  <input name="field_are_updated_pis_and_sds_s1" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_updated_pis_and_sds_s1.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_updated_pis_and_sds_s1.und[0]=''" id="field_are_updated_pis_and_sds_s0" value="" required/>
+                  <label for="field_are_updated_pis_and_sds_s0">N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_updated_pis_and_sds_s1" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_updated_pis_and_sds_s1.und[0].value" id="field_are_updated_pis_and_sds_s1" value="0" required/>
+                  <label for="field_are_updated_pis_and_sds_s1">N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_updated_pis_and_sds_s2" name="field_are_updated_pis_and_sds_s1" type="radio" value="1" ng-model="vm.data.cip_tools_checklist[0].field_are_updated_pis_and_sds_s1.und[0].value" required />
+                  <label for="field_are_updated_pis_and_sds_s2">Y</label>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_are_updated_pis_and_sds_s1.$error.required">Please Select An Option</div>
+                <!-- <div ng-show="vm.cipform.group_quality.field_are_updated_pis_and_sds_s1.$error.pattern">Only numeric values are allowed.</div> -->
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Are Updated SOP's Available Objects To Be Cleaned?<span class="required-field">*</span></label>
+              <!-- <div class="form-item"><input type="text" ng-model="vm.data.cip_tools_checklist[0].field_are_updated_sop_1.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_are_updated_sop_1.und[0].value=''" name="field_are_updated_sop_1" ng-required="vm.showvalidationmsg"/></div> -->
+              <div>
+                <div class="radio hidden">
+                  <input name="field_are_updated_sop_1" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_updated_sop_1.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_updated_sop_1.und[0]=''" id="field_are_updated_sop_0" value="" required/>
+                  <label for="field_are_updated_sop_0">N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_updated_sop_1" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_updated_sop_1.und[0].value" id="field_are_updated_sop_1" value="0" required/>
+                  <label for="field_are_updated_sop_1">N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_updated_sop_2" name="field_are_updated_sop_1" type="radio" value="1" ng-model="vm.data.cip_tools_checklist[0].field_are_updated_sop_1.und[0].value" required />
+                  <label for="field_are_updated_sop_2">Y</label>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_are_updated_sop_1.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Is Personal Protective Equipment Available, Clean And In Good Condition And Used?<span class="required-field">*</span></label>
+              <!-- <div class="form-item"><input type="text" ng-model="vm.data.cip_tools_checklist[0].field_is_personal_protective_1.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_is_personal_protective_1.und[0].value=''" name="field_is_personal_protective_1" ng-required="vm.showvalidationmsg"/></div> -->
+              <div>
+              <div class="radio hidden">
+                  <input name="field_is_personal_protective_1" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_is_personal_protective_1.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_is_personal_protective_1.und[0]=''" id="field_is_personal_protective_0" value="" required/>
+                  <label for="field_is_personal_protective_0">N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_is_personal_protective_1" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_is_personal_protective_1.und[0].value" id="field_is_personal_protective_1" value="0" required/>
+                  <label for="field_is_personal_protective_1">N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_is_personal_protective_2" name="field_is_personal_protective_1" type="radio" value="1" ng-model="vm.data.cip_tools_checklist[0].field_is_personal_protective_1.und[0].value" required />
+                  <label for="field_is_personal_protective_2">Y</label>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_is_personal_protective_1.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Are There Supply Issues For Cleaning Chemicals?<span class="required-field">*</span></label>
+              <div>
+              <div class="radio hidden">
+                  <input name="field_are_there_supply_issues_fo" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_there_supply_issues_fo.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_there_supply_issues_fo.und[0]=''" id="field_are_there_supply_issues_fo0" value="" required/>
+                  <label for="field_are_there_supply_issues_fo0">N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_there_supply_issues_fo" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_there_supply_issues_fo.und[0].value" id="field_are_there_supply_issues_fo1" value="0" required/>
+                  <label for="field_are_there_supply_issues_fo1">N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_there_supply_issues_fo2" name="field_are_there_supply_issues_fo" type="radio" value="1" ng-model="vm.data.cip_tools_checklist[0].field_are_there_supply_issues_fo.und[0].value" required />
+                  <label for="field_are_there_supply_issues_fo2">Y</label>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_quality.field_are_there_supply_issues_fo.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Describe Supply Issues?</label>
+              <div class="form-item"><input type="text" auto-next ng-model="vm.data.cip_tools_checklist[0].field_describe_supply_issues_.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_describe_supply_issues_.und[0].value=''"/></div>
+            </div>
+            <div class="form-col"></div>
+          </div>
+        </div>
+      </ng-form>
+      <div class="accordion-footer padding">
+        <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.cipform.group_costbasis,5);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+      </div>
+    </accordion-item>
+    <accordion-item item-title="Observation" accordion-id="accordion-divider-6" >
+      <ng-form name="vm.cipform.group_observation">
+        <div class="padding form form-inline form-dark">
+          <div class="form-row">
+            <div class="form-col">
+              <label>Are Surfaces Checked Visually?<span class="required-field">*</span></label>
+              <div  ng-disabled="vm.data.checklist_basic_info.isFinalized">
+              <div class="radio hidden">
+                  <input type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_visua.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_visua.und[0]=''" name="field_are_surfaces_checked_visua" id="field_are_surfaces_checked_visua0" required value="" required />
+                  <label for="field_are_surfaces_checked_visua0"> N/A</label>
+                </div>
+                <div class="radio">
+                  <input type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_visua.und[0].value" name="field_are_surfaces_checked_visua" id="field_are_surfaces_checked_visua1" required value="0" ng-click="vm.resetObservations('field_test_visually')" required />
+                  <label for="field_are_surfaces_checked_visua1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_surfaces_checked_visua2" required ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_visua.und[0].value" name="field_are_surfaces_checked_visua" value="1" type="radio" required />
+                  <label for="field_are_surfaces_checked_visua2">Y</label>
+                </div>
+              </div>
+              <div ng-show="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_visua.und[0].value==1">
+                <div class="">
+                  <fieldset>
+                    <legend>Description Of Surface:</legend>
+                    <div class="form-roww repeat-divider" ng-repeat="field_test_visually in vm.data.field_test_visually track by $index">
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label >Description Of Surface</label>
+                        <textarea   ng-model="field_test_visually.field_description_of_surface.und[0].value" rows="4" cols="50" ></textarea>
+                      </div>
+                      <div class="form-row"  ng-disabled="vm.data.checklist_basic_info.isFinalized">
+                        <div class="file fileUploadAccordion">
+                          <span class="file-text">{{field_test_visually.field_photo.und[0].filename || "Select A File"}}</span>
+                          <div class="btn-group">
+                            <input ng-model="field_test_visually.field_photo.und[0]" type="file" id="vis-fileupload{{$index}}" accept="image/*" capture="camera"   base-sixty-four-input/>
+                            <!-- <input type="file" id="fileupload" ng-model="csv_file" ng-init="csv_file=''"> -->
+                            <label for="vis-fileupload{{$index}}" class="btn btn-primary"> <span ng-if="vm.isMobile"><i class="icon-camera"></i></span> <span ng-if="!vm.isMobile"><i class="icon-plus"></i> SELECT</span></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="field_test_visually.field_photo.und[0].absolute_url" class="img-thumbnail">
+                        <a ng-click="open(field_test_visually.field_photo.und[0],{absoluteUrl:field_test_visually.field_photo.und[0].absolute_url},vm.data.checklist_basic_info.isFinalized)"><img ng-src="{{field_test_visually.field_photo.und[0].preview_url}}"></a>
+                        <!--a href="{{field_test_visually.field_photo.und[0].absolute_url}}">{{field_test_visually.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div ng-if="field_test_visually.field_photo.und[0].base64" class="img-thumbnail">
+                        <a ng-click="open(field_test_visually.field_photo.und[0],{base64:field_test_visually.field_photo.und[0].base64,filetype:field_test_visually.field_photo.und[0].filetype},vm.data.checklist_basic_info.isFinalized)"><img class="thumbnail" ng-src="{{'data:'+ field_test_visually.field_photo.und[0].filetype +';base64,'+ field_test_visually.field_photo.und[0].base64}}"></a>
+                        <!--a href="{{field_test_visually.field_photo.und[0].absolute_url}}">{{field_test_visually.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label>Description Of Location Of Interest</label>
+                        <textarea  ng-model="field_test_visually.field_description_of_location_of.und[0].value" rows="4" cols="50"></textarea>
+                      </div>
+                      <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-danger btn-sm probe-btn" ng-click="vm.deleteRepeat(vm.data.field_test_visually,$index)" ><span class="btn-icon-position icon-trash-o " > Delete</span></button>
+                    </div>
+                    <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-primary btn-sm" ng-click="vm.addMore(vm.data.field_test_visually)" ><span class="btn-icon-position icon-plus "></span> &nbsp;Add More</button>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_observation.field_are_surfaces_checked_visua.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Are Surfaces Checked With UV?<span class="required-field">*</span></label>
+              <div ng-disabled="vm.data.checklist_basic_info.isFinalized">
+                <div class="radio hidden">
+                  <input name="field_are_surfaces_checked_with_" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with_.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with_.und[0]=''" id="field_are_surfaces_checked_with_0" value="" required/>
+                  <label for="field_are_surfaces_checked_with_0"> N</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_surfaces_checked_with_"  ng-click="vm.resetObservations('field_test_uv')" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with_.und[0].value" id="field_are_surfaces_checked_with_1" value="0" required/>
+                  <label for="field_are_surfaces_checked_with_1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_surfaces_checked_with_2" name="field_are_surfaces_checked_with_" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with_.und[0].value" type="radio" value="1" required/>
+                  <label for="field_are_surfaces_checked_with_2">Y</label>
+                </div>
+              </div>
+              <div ng-show="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with_.und[0].value==1">
+                <div class="">
+                  <fieldset>
+                    <legend>Description Of Surface:</legend>
+                    <div class="form-roww repeat-divider" ng-repeat="field_test_uv in vm.data.field_test_uv track by $index">
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label >Description Of Surface</label>
+                        <textarea   ng-model="field_test_uv.field_description_of_surface.und[0].value" rows="4" cols="50" ></textarea>
+                      </div>
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <div class="file fileUploadAccordion">
+                          <span class="file-text">{{field_test_uv.field_photo.und[0].filename || "Select A File"}}</span>
+                          <div class="btn-group">
+                            <input ng-model="field_test_uv.field_photo.und[0]" accept="image/*" capture="camera"  type="file" id="uv-fileupload{{$index}}"  base-sixty-four-input />
+                            <!-- <input type="file" id="fileupload" ng-model="csv_file" ng-init="csv_file=''"> -->
+                            <label for="uv-fileupload{{$index}}" class="btn btn-primary"> <span ng-if="vm.isMobile"><i class="icon-camera"></i></span> <span ng-if="!vm.isMobile"><i class="icon-plus"></i> SELECT</span></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="field_test_uv.field_photo.und[0].absolute_url" class="img-thumbnail">
+                        <a ng-click="open(field_test_uv.field_photo.und[0],{absoluteUrl:field_test_uv.field_photo.und[0].absolute_url},vm.data.checklist_basic_info.isFinalized)"><img ng-src="{{field_test_uv.field_photo.und[0].preview_url}}"></a>
+                        <!--a href="{{field_test_uv.field_photo.und[0].absolute_url}}">{{field_test_uv.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div ng-if="field_test_uv.field_photo.und[0].base64" class="img-thumbnail">
+                        <a ng-click="open(field_test_uv.field_photo.und[0],{base64:field_test_uv.field_photo.und[0].base64,filetype:field_test_uv.field_photo.und[0].filetype},vm.data.checklist_basic_info.isFinalized)"><img class="thumbnail" ng-src="{{'data:'+ field_test_uv.field_photo.und[0].filetype +';base64,'+ field_test_uv.field_photo.und[0].base64}}"></a>
+                        <!--a href="{{field_test_uv.field_photo.und[0].absolute_url}}">{{field_test_uv.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label >Description Of Location Of Interest</label>
+                        <textarea   ng-model="field_test_uv.field_description_of_location_of.und[0].value" rows="4" cols="50"></textarea>
+                      </div>
+                      <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-danger btn-sm probe-btn" ng-click="vm.deleteRepeat(vm.data.field_test_uv,$index)" ><span class="btn-icon-position icon-trash-o " > Delete</span></button>
+                    </div>
+                    <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-primary btn-sm" ng-click="vm.addMore(vm.data.field_test_uv)"><span class="btn-icon-position icon-plus "></span>&nbsp;&nbsp;Add More</button>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_observation.field_are_surfaces_checked_with_.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Are Surfaces Checked With Endoscopic Inspection?<span class="required-field">*</span></label>
+              <div  ng-disabled="vm.data.checklist_basic_info.isFinalized">
+              <div class="radio hidden">
+                  <input name="field_are_surfaces_checked_with2" type="radio" id="field_are_surfaces_checked_with20" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with2.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with2.und[0]=''" required value="" />
+                  <label for="field_are_surfaces_checked_with20"> N</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_surfaces_checked_with2" type="radio" id="field_are_surfaces_checked_with21" ng-click="vm.resetObservations('field_test_endoscopic')" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with2.und[0].value" required value="0" />
+                  <label for="field_are_surfaces_checked_with21"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_surfaces_checked_with22" name="field_are_surfaces_checked_with2" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with2.und[0].value" required value="1" />
+                  <label for="field_are_surfaces_checked_with22">Y</label>
+                </div>
+              </div>
+              <div ng-show="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_with2.und[0].value==1">
+                <div class="">
+                  <fieldset>
+                    <legend>Description Of Surface:</legend>
+                    <div class="form-roww repeat-divider" ng-repeat="field_test_endoscopic in vm.data.field_test_endoscopic track by $index">
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label >Description Of Surface</label>
+                        <textarea  ng-disabled="vm.data.checklist_basic_info.isFinalized" ng-model="field_test_endoscopic.field_description_of_surface.und[0].value" rows="4" cols="50" ></textarea>
+                      </div>
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <div class="file fileUploadAccordion">
+                          <span class="file-text">{{field_test_endoscopic.field_photo.und[0].filename || "Select A File"}}</span>
+                          <div class="btn-group">
+                            <input ng-model="field_test_endoscopic.field_photo.und[0]" accept="image/*" capture="camera"  type="file" id="end-fileupload{{$index}}"  base-sixty-four-input />
+                            <!-- <input type="file" id="fileupload" ng-model="csv_file" ng-init="csv_file=''"> -->
+                            <label for="end-fileupload{{$index}}" class="btn btn-primary"><span ng-if="vm.isMobile"><i class="icon-camera"></i></span> <span ng-if="!vm.isMobile"><i class="icon-plus"></i> SELECT</span></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="field_test_endoscopic.field_photo.und[0].absolute_url" class="img-thumbnail">
+                        <a ng-click="open(field_test_endoscopic.field_photo.und[0],{absoluteUrl:field_test_endoscopic.field_photo.und[0].absolute_url},vm.data.checklist_basic_info.isFinalized)"><img ng-src="{{field_test_endoscopic.field_photo.und[0].preview_url}}"></a>
+                        <!--a href="{{field_test_endoscopic.field_photo.und[0].absolute_url}}">{{field_test_endoscopic.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div ng-if="field_test_endoscopic.field_photo.und[0].base64" class="img-thumbnail">
+                        <a ng-click="open(field_test_endoscopic.field_photo.und[0],{base64:field_test_endoscopic.field_photo.und[0].base64,filetype:field_test_endoscopic.field_photo.und[0].filetype},vm.data.checklist_basic_info.isFinalized)"><img class="thumbnail" ng-src="{{'data:'+ field_test_endoscopic.field_photo.und[0].filetype +';base64,' + field_test_endoscopic.field_photo.und[0].base64}}"></a>
+                        <!--a href="{{field_test_endoscopic.field_photo.und[0].absolute_url}}">{{field_test_endoscopic.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label >Description Of Location Of Interest</label>
+                        <textarea ng-model="field_test_endoscopic.field_description_of_location_of.und[0].value" rows="4" cols="50"></textarea>
+                      </div>
+                      <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-danger btn-sm probe-btn" ng-click="vm.deleteRepeat(vm.data.field_test_endoscopic,$index)" ><span class="btn-icon-position icon-trash-o "  > Delete</span></button>
+                    </div>
+                    <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-primary btn-sm" ng-click="vm.addMore(vm.data.field_test_endoscopic)"><span class="btn-icon-position icon-plus "></span>&nbsp;&nbsp;Add More</button>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_observation.field_are_surfaces_checked_with2.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Are Surfaces Checked With ATP?<span class="required-field">*</span></label>
+              <div>
+              <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="radio hidden">
+                  <input name="field_are_surfaces_checked_atp" type="radio" id="field_are_surfaces_checked_atp0" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_atp.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_atp.und[0]=''" value="" required/>
+                  <label for="field_are_surfaces_checked_atp0"> N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_surfaces_checked_atp" type="radio" id="field_are_surfaces_checked_atp1" ng-click="vm.resetObservations('field_test_atp')" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_atp.und[0].value" value="0" required/>
+                  <label for="field_are_surfaces_checked_atp1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_surfaces_checked_atp2" name="field_are_surfaces_checked_atp" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_atp.und[0].value" value="1" required />
+                  <label for="field_are_surfaces_checked_atp2">Y</label>
+                </div>
+              </div>
+              <div ng-show="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_atp.und[0].value==1">
+                <div class="">
+                  <fieldset>
+                    <legend>Description Of Surface:</legend>
+                    <div class="form-roww repeat-divider" ng-repeat="field_test_atp in vm.data.field_test_atp track by $index">
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label >Description Of Surface</label>
+                        <textarea ng-model="field_test_atp.field_description_of_surface.und[0].value" rows="4" cols="50" ></textarea>
+                      </div>
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized"  class="form-row">
+                        <div class="file fileUploadAccordion">
+                          <span class="file-text">{{field_test_atp.field_photo.und[0].filename || "Select A File"}}</span>
+                          <div class="btn-group">
+                            <input ng-model="field_test_atp.field_photo.und[0]" accept="image/*" capture="camera"  type="file" id="atp-fileupload{{$index}}"  base-sixty-four-input />
+                            <!-- <input type="file" id="fileupload" ng-model="csv_file" ng-init="csv_file=''"> -->
+                            <label for="atp-fileupload{{$index}}" class="btn btn-primary"><span ng-if="vm.isMobile"><i class="icon-camera"></i></span> <span ng-if="!vm.isMobile"><i class="icon-plus"></i> SELECT</span></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="field_test_atp.field_photo.und[0].absolute_url" class="img-thumbnail">
+                        <a ng-click="open(field_test_atp.field_photo.und[0],{absoluteUrl:field_test_atp.field_photo.und[0].absolute_url},vm.data.checklist_basic_info.isFinalized)"><img ng-src="{{field_test_atp.field_photo.und[0].preview_url}}"></a>
+                      </div>
+                        <!--a href="{{field_test_atp.field_photo.und[0].absolute_url}}">{{field_test_atp.field_photo.und[0].filename}}</a-->
+                      <div ng-if="field_test_atp.field_photo.und[0].base64" class="img-thumbnail">
+                        <a ng-click="open(field_test_atp.field_photo.und[0],{base64:field_test_atp.field_photo.und[0].base64,filetype:field_test_atp.field_photo.und[0].filetype},vm.data.checklist_basic_info.isFinalized)"><img class="thumbnail" ng-src="{{'data:'+ field_test_atp.field_photo.und[0].filetype +';base64,' +field_test_atp.field_photo.und[0].base64}}"></a>
+                        <!--a href="{{field_test_atp.field_photo.und[0].absolute_url}}">{{field_test_atp.field_photo.und[0].filename}}</a-->
+                      </div>
+
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label>Description Of Location Of Interest</label>
+                        <textarea ng-model="field_test_atp.field_description_of_location_of.und[0].value" rows="4" cols="50"></textarea>
+                      </div>
+                      <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-danger btn-sm probe-btn" ng-click="vm.deleteRepeat(vm.data.field_test_atp,$index)"><span class="btn-icon-position icon-trash-o " > Delete</span></button>
+                    </div>
+                    <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-primary btn-sm" ng-click="vm.addMore(vm.data.field_test_atp)"><span class="btn-icon-position icon-plus "></span>&nbsp;&nbsp;Add More</button>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_observation.field_are_surfaces_checked_atp.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col">
+              <label>Are Surfaces Checked With Micro?<span class="required-field">*</span></label>
+              <div  ng-disabled="vm.data.checklist_basic_info.isFinalized">
+              <div class="radio hidden">
+                  <input name="field_are_surfaces_checked_micro" type="radio" id="field_are_surfaces_checked_micro0" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_micro.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_micro.und[0]=''" value="" required/>
+                  <label for="field_are_surfaces_checked_micro0"> N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_surfaces_checked_micro" type="radio" id="field_are_surfaces_checked_micro1" ng-click="vm.resetObservations('field_test_micro')"  ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_micro.und[0].value" value="0" required/>
+                  <label for="field_are_surfaces_checked_micro1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_surfaces_checked_micro2" name="field_are_surfaces_checked_micro" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_micro.und[0].value" value="1" required />
+                  <label for="field_are_surfaces_checked_micro2">Y</label>
+                </div>
+              </div>
+              <div ng-show="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_micro.und[0].value==1">
+                <div class="">
+                  <fieldset>
+                    <legend>Description Of Surface:</legend>
+                    <div class="form-roww repeat-divider" ng-repeat="field_test_micro in vm.data.field_test_micro track by $index">
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label >Description Of Surface</label>
+                        <textarea ng-model="field_test_micro.field_description_of_surface.und[0].value" rows="4" cols="50" ></textarea>
+                      </div>
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <div class="file fileUploadAccordion">
+                          <span class="file-text">{{field_test_micro.field_photo.und[0].filename || "Select A File"}}</span>
+                          <div class="btn-group">
+                            <input ng-model="field_test_micro.field_photo.und[0]" accept="image/*" capture="camera"  type="file" id="micro-fileupload{{$index}}"  base-sixty-four-input />
+                            <!-- <input type="file" id="fileupload" ng-model="csv_file" ng-init="csv_file=''"> -->
+                            <label for="micro-fileupload{{$index}}" class="btn btn-primary"><span ng-if="vm.isMobile"><i class="icon-camera"></i></span> <span ng-if="!vm.isMobile"><i class="icon-plus"></i> SELECT</span></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="field_test_micro.field_photo.und[0].absolute_url" class="img-thumbnail">
+                        <a ng-click="open(field_test_micro.field_photo.und[0],{absoluteUrl:field_test_micro.field_photo.und[0].absolute_url},vm.data.checklist_basic_info.isFinalized)"><img ng-src="{{field_test_micro.field_photo.und[0].preview_url}}"></a>
+                        <!--a href="{{field_test_micro.field_photo.und[0].absolute_url}}">{{field_test_micro.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div ng-if="field_test_micro.field_photo.und[0].base64" class="img-thumbnail">
+                        <a ng-click="open(field_test_micro.field_photo.und[0],{base64:field_test_micro.field_photo.und[0].base64,filetype:field_test_micro.field_photo.und[0].filetype},vm.data.checklist_basic_info.isFinalized)"><img class="thumbnail" ng-src="{{'data:'+ field_test_micro.field_photo.und[0].filetype +';base64,' +field_test_micro.field_photo.und[0].base64}}"></a>
+                        <!--a href="{{field_test_micro.field_photo.und[0].absolute_url}}">{{field_test_micro.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label for="field_description_of_location_of">Description Of Location Of Interest</label>
+                        <textarea id="field_description_of_location_of" ng-model="field_test_micro.field_description_of_location_of.und[0].value" rows="4" cols="50"></textarea>
+                      </div>
+                      <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-danger btn-sm probe-btn" ng-click="vm.deleteRepeat(vm.data.field_test_micro,$index)" ><span class="btn-icon-position icon-trash-o " > Delete</span></button>
+                    </div>
+                    <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-primary btn-sm" ng-click="vm.addMore(vm.data.field_test_micro)" ><span class="btn-icon-position icon-plus "></span>&nbsp;&nbsp;Add More</button>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_observation.field_are_surfaces_checked_micro.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+            <div class="form-col">
+              <label>Are Surfaces Checked For Allergens?<span class="required-field">*</span></label>
+              <div  ng-disabled="vm.data.checklist_basic_info.isFinalized">
+              <div class="radio hidden">
+                  <input name="field_are_surfaces_checked_aller" type="radio" id="field_are_surfaces_checked_aller0" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_aller.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_aller.und[0]=''" value="" required/>
+                  <label for="field_are_surfaces_checked_aller0"> N/A</label>
+                </div>
+                <div class="radio">
+                  <input name="field_are_surfaces_checked_aller" type="radio" id="field_are_surfaces_checked_aller1" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_aller.und[0].value" value="0" ng-click="vm.resetObservations('field_test_allergens')" required/>
+                  <label for="field_are_surfaces_checked_aller1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_surfaces_checked_aller2" name="field_are_surfaces_checked_aller" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_aller.und[0].value" value="1" required />
+                  <label for="field_are_surfaces_checked_aller2">Y</label>
+                </div>
+              </div>
+              <div ng-show="vm.data.cip_tools_checklist[0].field_are_surfaces_checked_aller.und[0].value==1">
+                <div class="">
+                  <fieldset>
+                    <legend>Description Of Surface:</legend>
+                    <div class="form-roww repeat-divider" ng-repeat="field_test_allergens in vm.data.field_test_allergens track by $index">
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label>Description Of Surface</label>
+                        <textarea ng-model="field_test_allergens.field_description_of_surface.und[0].value" rows="4" cols="50" ></textarea>
+                      </div>
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <div class="file fileUploadAccordion">
+                          <span class="file-text">{{field_test_allergens.field_photo.und[0].filename || "Select A File"}}</span>
+                          <div class="btn-group">
+                            <input ng-model="field_test_allergens.field_photo.und[0]" accept="image/*" capture="camera"  type="file" id="alle-fileupload{{$index}}"  base-sixty-four-input />
+                            <!-- <input type="file" id="fileupload" ng-model="csv_file" ng-init="csv_file=''"> -->
+                            <label for="alle-fileupload{{$index}}" class="btn btn-primary"><span ng-if="vm.isMobile"><i class="icon-camera"></i></span> <span ng-if="!vm.isMobile"><i class="icon-plus"></i> SELECT</span></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="field_test_allergens.field_photo.und[0].absolute_url" class="img-thumbnail">
+                        <a ng-click="open(field_test_allergens.field_photo.und[0],{absoluteUrl:field_test_allergens.field_photo.und[0].absolute_url},vm.data.checklist_basic_info.isFinalized)"><img ng-src="{{field_test_allergens.field_photo.und[0].preview_url}}"></a>
+                        <!--a href="{{field_test_allergens.field_photo.und[0].absolute_url}}">{{field_test_allergens.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div ng-if="field_test_allergens.field_photo.und[0].base64" class="img-thumbnail">
+                        <a ng-click="open(field_test_allergens.field_photo.und[0],{base64:field_test_allergens.field_photo.und[0].base64,filetype:field_test_allergens.field_photo.und[0].filetype},vm.data.checklist_basic_info.isFinalized)"><img class="thumbnail" ng-src="{{'data:'+ field_test_allergens.field_photo.und[0].filetype +';base64,' +field_test_allergens.field_photo.und[0].base64}}"></a>
+                        <!--a href="{{field_test_allergens.field_photo.und[0].absolute_url}}">{{field_test_allergens.field_photo.und[0].filename}}</a-->
+                      </div>
+                      <div  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="form-row">
+                        <label >Description Of Location Of Interest</label>
+                        <textarea  ng-model="field_test_allergens.field_description_of_location_of.und[0].value" rows="4" cols="50"></textarea>
+                      </div>
+                      <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-danger btn-sm probe-btn" ng-click="vm.deleteRepeat(vm.data.field_test_allergens,$index)"><span class="btn-icon-position icon-trash-o " > Delete</span></button>
+                    </div>
+                    <button  ng-disabled="vm.data.checklist_basic_info.isFinalized" class="btn btn-primary btn-sm" ng-click="vm.addMore(vm.data.field_test_allergens)"><span class="btn-icon-position icon-plus "></span>&nbsp;&nbsp;Add More</button>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_observation.field_are_surfaces_checked_aller.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-form>
+      <div class="accordion-footer padding">
+        <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.cipform.group_costbasis,6);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+      </div>
+    </accordion-item>
+    <accordion-item item-title="CIP Specific Questions" >
+      <ng-form class="" name="vm.cipform.group_cipspecificques" ng-disabled="vm.data.checklist_basic_info.isFinalized">
+        <div class="padding form form-inline form-dark">
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does Plant Utilize Air Blows For Wash Solution Recovery?</label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_plant_utilize_air_blo" ng-model="vm.data.cip_tools_checklist[0].field_does_plant_utilize_air_blo.und[0].value" type="radio" id="field_does_plant_utilize_air_blo2" value="0" />
+                  <label for="field_does_plant_utilize_air_blo2"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_plant_utilize_air_blo3" ng-model="vm.data.cip_tools_checklist[0].field_does_plant_utilize_air_blo.und[0].value" name="field_does_plant_utilize_air_blo" type="radio" value="1" />
+                  <label for="field_does_plant_utilize_air_blo3">Y</label>
+                </div>
+                <div class="radio">
+                  <input name="field_does_plant_utilize_air_blo" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_plant_utilize_air_blo.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_plant_utilize_air_blo.und[0]=''" value="" id="field_does_plant_utilize_air_blo1"  />
+                  <label for="field_does_plant_utilize_air_blo1"> N/A</label>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does Plant Utilize Air Blows To Evacuate Lines After Sanitizing?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input id="field_does_plant_utilize_21" name="field_does_plant_utilize_2" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_plant_utilize_2.und[0].value" value="0" required />
+                  <label for="field_does_plant_utilize_21"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_plant_utilize_22" name="field_does_plant_utilize_2" ng-model="vm.data.cip_tools_checklist[0].field_does_plant_utilize_2.und[0].value" type="radio" value="1" required />
+                  <label for="field_does_plant_utilize_22">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_does_plant_utilize_2" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_plant_utilize_2.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_plant_utilize_2.und[0]=''" id="field_does_plant_utilize_20" value="" required />
+                    <label for="field_does_plant_utilize_20" > N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_does_plant_utilize_2.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does CIP Utilize Conductivity To Divert Rinses?</label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_cip_utilize_conductiv" type="radio" id="field_does_cip_utilize_conductiv2" ng-model="vm.data.cip_tools_checklist[0].field_does_cip_utilize_conductiv.und[0].value" value="0"/>
+                  <label for="field_does_cip_utilize_conductiv2"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_cip_utilize_conductiv3" name="field_does_cip_utilize_conductiv" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_cip_utilize_conductiv.und[0].value" value="1" />
+                  <label for="field_does_cip_utilize_conductiv3">Y</label>
+                </div>
+                <div class="radio">
+                  <input name="field_does_cip_utilize_conductiv" type="radio" id="field_does_cip_utilize_conductiv1" ng-model="vm.data.cip_tools_checklist[0].field_does_cip_utilize_conductiv.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_cip_utilize_conductiv.und[0]=''" value="" />
+                  <label for="field_does_cip_utilize_conductiv1"> N/A</label>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does CIP System Have A Conductivity Probe In The Return Line?</label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_cip_system_have_a_con" type="radio" id="field_does_cip_system_have_a_con2" ng-model="vm.data.cip_tools_checklist[0].field_does_cip_system_have_a_con.und[0].value" value="0" />
+                  <label for="field_does_cip_system_have_a_con2"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_cip_system_have_a_con3" name="field_does_cip_system_have_a_con" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_cip_system_have_a_con.und[0].value" value="1" />
+                  <label for="field_does_cip_system_have_a_con3">Y</label>
+                </div>
+                <div class="radio">
+                  <input name="field_does_cip_system_have_a_con" type="radio" id="field_does_cip_system_have_a_con1" ng-model="vm.data.cip_tools_checklist[0].field_does_cip_system_have_a_con.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_cip_system_have_a_con.und[0]=''" value="" />
+                  <label for="field_does_cip_system_have_a_con1"> N/A</label>
+                </div>
+              </div>
+              <!-- <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                  <div ng-show="vm.cipform.group_cipspecificques.field_does_cip_system_have_a_con.$error.required">Does plant utilize air blows to evacuate lines after sanitizing?</div>
+              </div> -->
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does the CIP System Have A Pressure Sensor Located On The Supply Line?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_the_cip_system_have_a" type="radio" id="field_does_the_cip_system_have_a1" ng-model="vm.data.cip_tools_checklist[0].field_does_the_cip_system_have_a.und[0].value" value="0" required />
+                  <label for="field_does_the_cip_system_have_a1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_the_cip_system_have_a2" name="field_does_the_cip_system_have_a" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_the_cip_system_have_a.und[0].value" value="1" required/>
+                  <label for="field_does_the_cip_system_have_a2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_does_the_cip_system_have_a" type="radio" id="field_does_the_cip_system_have_a0" ng-model="vm.data.cip_tools_checklist[0].field_does_the_cip_system_have_a.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_the_cip_system_have_a.und[0]=''" value="" required />
+                    <label for="field_does_the_cip_system_have_a0"> N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_does_the_cip_system_have_a.$error.required">Please select an option</div>
+              </div>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does The CIP System Have A Flow Meter Preferably Located On The Supply Line?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_the_cip_system_2" type="radio" value="0" id="field_does_the_cip_system_21" ng-model="vm.data.cip_tools_checklist[0].field_does_the_cip_system_2.und[0].value" required/>
+                  <label for="field_does_the_cip_system_21"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_the_cip_system_22" name="field_does_the_cip_system_2" value="1" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_the_cip_system_2.und[0].value" required/>
+                  <label for="field_does_the_cip_system_22">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_does_the_cip_system_2" type="radio" value="" id="field_does_the_cip_system_20" ng-model="vm.data.cip_tools_checklist[0].field_does_the_cip_system_2.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_the_cip_system_2.und[0]=''" required/>
+                    <label for="field_does_the_cip_system_20"> N/A</label>
+                  </div>
+              </div>
+              <div ng-show="vm.data.cip_tools_checklist[0].field_does_the_cip_system_2.und[0].value==0">
+                If Not, Comment On Where It Is Located.
+                <textarea rows="4" cols="50" name="field_if_not_comment_on_where_it" ng-required="vm.data.cip_tools_checklist[0].field_does_the_cip_system_2.und[0].value==0" ng-model="vm.data.cip_tools_checklist[0].field_if_not_comment_on_where_it.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_if_not_comment_on_where_it.und[0].value=''"></textarea><span class="required-field">*</span>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_if_not_comment_on_where_it.$error.required">Comment On Where It Is Located.</div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_does_the_cip_system_2.$error.required">Please Select An Option
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does The CIP System Have A Return Temperature Probe Located On The Return Line?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_the_cip_system_3" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_the_cip_system_3.und[0].value" value="0" id="field_does_the_cip_system_31" required />
+                  <label for="field_does_the_cip_system_31"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_the_cip_system_32" name="field_does_the_cip_system_3" ng-model="vm.data.cip_tools_checklist[0].field_does_the_cip_system_3.und[0].value" value="1" type="radio" required />
+                  <label for="field_does_the_cip_system_32">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_does_the_cip_system_3" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_the_cip_system_3.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_the_cip_system_3.und[0]=''" value="" id="field_does_the_cip_system_30" required />
+                    <label for="field_does_the_cip_system_30"> N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_does_the_cip_system_3.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Is There Proof Of Return?</label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_is_there_proof_of_return_" type="radio" id="field_is_there_proof_of_return_2" ng-model="vm.data.cip_tools_checklist[0].field_is_there_proof_of_return_.und[0].value" value="0" />
+                  <label for="field_is_there_proof_of_return_2"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_is_there_proof_of_return_3" name="field_is_there_proof_of_return_" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_is_there_proof_of_return_.und[0].value" value="1" />
+                  <label for="field_is_there_proof_of_return_3">Y</label>
+                </div>
+                <div class="radio">
+                  <input name="field_is_there_proof_of_return_" type="radio" id="field_is_there_proof_of_return_1" ng-model="vm.data.cip_tools_checklist[0].field_is_there_proof_of_return_.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_is_there_proof_of_return_.und[0]=''" value="" />
+                  <label for="field_is_there_proof_of_return_1"> N/A</label>
+                </div>
+              </div>
+              <div ng-show="vm.data.cip_tools_checklist[0].field_is_there_proof_of_return_.und[0].value==1">
+                Describe What It Is In The Comments Section
+                <textarea rows="4" cols="50" name="field_is_there_proof_of_return_" ng-required="vm.data.cip_tools_checklist[0].field_is_there_proof_of_return_.und[0].value==1" ng-model="vm.data.cip_tools_checklist[0].field_describe_what_it_is_in_the.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_describe_what_it_is_in_the.und[0].value=''"></textarea><span class="required-field">*</span>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_is_there_proof_of_return_.$error.required">Please Describe What It Is In The Comments Section</div>
+              </div>
+            </div>
+            </div>
+             <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does Plant Have The Internal Capability With Trained People To Modify Wash Programs In The PLC Controller?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_plant_have_the_intern" type="radio" id="field_does_plant_have_the_intern1" ng-model="vm.data.cip_tools_checklist[0].field_does_plant_have_the_intern.und[0].value" value="0" required />
+                  <label for="field_does_plant_have_the_intern1" > N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_plant_have_the_intern2" name="field_does_plant_have_the_intern" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_plant_have_the_intern.und[0].value" value="1" required />
+                  <label for="field_does_plant_have_the_intern2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_does_plant_have_the_intern" type="radio" id="field_does_plant_have_the_intern0" ng-model="vm.data.cip_tools_checklist[0].field_does_plant_have_the_intern.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_plant_have_the_intern.und[0]=''" value="" required />
+                    <label for="field_does_plant_have_the_intern0" > N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_does_plant_have_the_intern.$error.required">Please select an option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does CIP System Have An Over Temperature Control Shutdown Feature?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_cip_system_have_an_ov" type="radio" id="field_does_cip_system_have_an_ov1" ng-model="vm.data.cip_tools_checklist[0].field_does_cip_system_have_an_ov.und[0].value" value="0" required/>
+                  <label for="field_does_cip_system_have_an_ov1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_cip_system_have_an_ov2" name="field_does_cip_system_have_an_ov" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_cip_system_have_an_ov.und[0].value" value="1" required />
+                  <label for="field_does_cip_system_have_an_ov2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_does_cip_system_have_an_ov" type="radio" id="field_does_cip_system_have_an_ov0" ng-model="vm.data.cip_tools_checklist[0].field_does_cip_system_have_an_ov.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_cip_system_have_an_ov.und[0]=''" value="0" required/>
+                    <label for="field_does_cip_system_have_an_ov0"> N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_does_cip_system_have_an_ov.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>During Wash Circulation Does The CIP Controller Alarm / Hold / Shut Down When Conductivity Falls Below Set Point?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_during_wash_circulation_do" type="radio" id="field_during_wash_circulation_do1" ng-model="vm.data.cip_tools_checklist[0].field_during_wash_circulation_do.und[0].value" value="0" required />
+                  <label for="field_during_wash_circulation_do1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_during_wash_circulation_do2" name="field_during_wash_circulation_do" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_during_wash_circulation_do.und[0].value" value="1" required/>
+                  <label for="field_during_wash_circulation_do2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_during_wash_circulation_do" type="radio" id="field_during_wash_circulation_do0" ng-model="vm.data.cip_tools_checklist[0].field_during_wash_circulation_do.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_during_wash_circulation_do.und[0]=''" value="" required />
+                    <label for="field_during_wash_circulation_do0"> N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_during_wash_circulation_do.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col-cip">
+              <label>How Are Wash Detergents Injected? On A Time Feed Or Conductivity Basis From The PLC?</label>
+              <div class="form-item">
+                <textarea cols="90" auto-next rows="5" ng-model="vm.data.cip_tools_checklist[0].field_how_are_wash_detergents.und[0].value" ng-init="vm.data.cip_tools_checklist[0].field_how_are_wash_detergents.und[0].value=''"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Is There A Maximum Time That Detergents Can Be Pumped?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_is_there_a_maximum_time_th" type="radio" id="field_is_there_a_maximum_time_th1" ng-model="vm.data.cip_tools_checklist[0].field_is_there_a_maximum_time_th.und[0].value" value="0" required />
+                  <label for="field_is_there_a_maximum_time_th1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_is_there_a_maximum_time_th2" name="field_is_there_a_maximum_time_th" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_is_there_a_maximum_time_th.und[0].value" value="1" required />
+                  <label for="field_is_there_a_maximum_time_th2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_is_there_a_maximum_time_th" type="radio" id="field_is_there_a_maximum_time_th0" ng-model="vm.data.cip_tools_checklist[0].field_is_there_a_maximum_time_th.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_is_there_a_maximum_time_th.und[0]=''" value="" required />
+                    <label for="field_is_there_a_maximum_time_th0"> N/A</label>
+                  </div>
+                <p class="cip-note">To Insure That Detergents Are Not Used Excessively In Case Of System Failure</p>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_is_there_a_maximum_time_th.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does The Steam Valve Close In Situations Of No Flow?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_the_steam_valve_close" type="radio" id="field_does_the_steam_valve_close1" ng-model="vm.data.cip_tools_checklist[0].field_does_the_steam_valve_close.und[0].value" value="0" required />
+                  <label for="field_does_the_steam_valve_close1">N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_the_steam_valve_close2" name="field_does_the_steam_valve_close" type="radio"ng-model="vm.data.cip_tools_checklist[0].field_does_the_steam_valve_close.und[0].value" value="1" required />
+                  <label for="field_does_the_steam_valve_close2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_does_the_steam_valve_close" type="radio" id="field_does_the_steam_valve_close0" ng-model="vm.data.cip_tools_checklist[0].field_does_the_steam_valve_close.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_the_steam_valve_close.und[0]=''" value="" required />
+                    <label for="field_does_the_steam_valve_close0">N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_does_the_steam_valve_close.$error.required">Please select an option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does the PLC Have Interlocks To Prevent Chlorinated Products And Acids Being Pumped At Same Time?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_the_plc_have_interloc" type="radio" id="field_does_the_plc_have_interloc1" ng-model="vm.data.cip_tools_checklist[0].field_does_the_plc_have_interloc.und[0].value" value="0" required/>
+                  <label for="field_does_the_plc_have_interloc1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_the_plc_have_interloc2" name="field_does_the_plc_have_interloc" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_the_plc_have_interloc.und[0].value" value="1" required/>
+                  <label for="field_does_the_plc_have_interloc2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_does_the_plc_have_interloc" type="radio" id="field_does_the_plc_have_interloc0" ng-model="vm.data.cip_tools_checklist[0].field_does_the_plc_have_interloc.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_the_plc_have_interloc.und[0]=''" value="" required/>
+                    <label for="field_does_the_plc_have_interloc0"> N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_does_the_plc_have_interloc.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Is There A High Conductivity Set Point To Alarm When Sensor Or Analyzer Faults Out?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_is_there_a_high_conductivi" type="radio" id="field_is_there_a_high_conductivi1" ng-model="vm.data.cip_tools_checklist[0].field_is_there_a_high_conductivi.und[0].value" value="0" required />
+                  <label for="field_is_there_a_high_conductivi1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_is_there_a_high_conductivi2" name="field_is_there_a_high_conductivi" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_is_there_a_high_conductivi.und[0].value" value="1" required />
+                  <label for="field_is_there_a_high_conductivi2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_is_there_a_high_conductivi" type="radio" id="field_is_there_a_high_conductivi0" ng-model="vm.data.cip_tools_checklist[0].field_is_there_a_high_conductivi.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_is_there_a_high_conductivi.und[0]=''" value="" required />
+                    <label for="field_is_there_a_high_conductivi0"> N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_is_there_a_high_conductivi.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>If System Has A Flow Meter Does It Program By Flow?</label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_if_system_has_a_flow_meter" type="radio" id="field_if_system_has_a_flow_meter1" ng-model="vm.data.cip_tools_checklist[0].field_if_system_has_a_flow_meter.und[0].value" value="0" />
+                  <label for="field_if_system_has_a_flow_meter1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_if_system_has_a_flow_meter2" name="field_if_system_has_a_flow_meter" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_if_system_has_a_flow_meter.und[0].value" value="1" />
+                  <label for="field_if_system_has_a_flow_meter2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_if_system_has_a_flow_meter" type="radio" id="field_if_system_has_a_flow_meter0" ng-model="vm.data.cip_tools_checklist[0].field_if_system_has_a_flow_meter.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_if_system_has_a_flow_meter.und[0]=''" value="" />
+                    <label for="field_if_system_has_a_flow_meter0"> N/A</label>
+                  </div>
+              </div>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Are There Any Cross Contaminations Issues (Raw And Cooked/Pasteurized) Washed On Same CIP?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_are_there_any_cross_contam" type="radio" id="field_are_there_any_cross_contam1" ng-model="vm.data.cip_tools_checklist[0].field_are_there_any_cross_contam.und[0].value" value="0" required />
+                  <label for="field_are_there_any_cross_contam1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_there_any_cross_contam2" name="field_are_there_any_cross_contam" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_there_any_cross_contam.und[0].value" value="1" required />
+                  <label for="field_are_there_any_cross_contam2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_are_there_any_cross_contam" type="radio" id="field_are_there_any_cross_contam0" ng-model="vm.data.cip_tools_checklist[0].field_are_there_any_cross_contam.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_there_any_cross_contam.und[0]=''" value="" required />
+                    <label for="field_are_there_any_cross_contam0"> N</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_are_there_any_cross_contam.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Are All Lines Washed Designed With Sanitary Valves?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_are_all_lines_washed_desig" type="radio" id="field_are_all_lines_washed_desig1" ng-model="vm.data.cip_tools_checklist[0].field_are_all_lines_washed_desig.und[0].value" value="0" required />
+                  <label for="field_are_all_lines_washed_desig1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_all_lines_washed_desig2" name="field_are_all_lines_washed_desig" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_all_lines_washed_desig.und[0].value" value="1" required />
+                  <label for="field_are_all_lines_washed_desig2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_are_all_lines_washed_desig" type="radio" id="field_are_all_lines_washed_desig0" ng-model="vm.data.cip_tools_checklist[0].field_are_all_lines_washed_desig.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_all_lines_washed_desig.und[0]=''" value="" required />
+                    <label for="field_are_all_lines_washed_desig0"> N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_are_all_lines_washed_desig.$error.required">Please select an option</div>
+              </div>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Are There Any Dead Ends On The CIP System Were The Dead End Is Greater Than 1.5 Times The Diameter Of The Pipe?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_are_there_any_dead_ends_on" type="radio" id="field_are_there_any_dead_ends_on1" ng-model="vm.data.cip_tools_checklist[0].field_are_there_any_dead_ends_on.und[0].value" value="0" required />
+                  <label for="field_are_there_any_dead_ends_on1"> N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_there_any_dead_ends_on2" name="field_are_there_any_dead_ends_on" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_there_any_dead_ends_on.und[0].value" value="1" required />
+                  <label for="field_are_there_any_dead_ends_on2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_are_there_any_dead_ends_on" type="radio" id="field_are_there_any_dead_ends_on0" ng-model="vm.data.cip_tools_checklist[0].field_are_there_any_dead_ends_on.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_there_any_dead_ends_on.und[0]=''" value="" required />
+                    <label for="field_are_there_any_dead_ends_on0">N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_are_there_any_dead_ends_on.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Are There Any Dead Ends On The Circuit Being Cleaned Were The Dead End Is Greater Than 1.5 Times The Diameter Of Pipe Cleaned?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_are_there_any_dead_ends_2" type="radio" id="field_are_there_any_dead_ends_21" ng-model="vm.data.cip_tools_checklist[0].field_are_there_any_dead_ends_2.und[0].value" value="0" required />
+                  <label for="field_are_there_any_dead_ends_21">N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_there_any_dead_ends_22" name="field_are_there_any_dead_ends_2" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_there_any_dead_ends_2.und[0].value" value="1" required/>
+                  <label for="field_are_there_any_dead_ends_22">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_are_there_any_dead_ends_2" type="radio" id="field_are_there_any_dead_ends_20" ng-model="vm.data.cip_tools_checklist[0].field_are_there_any_dead_ends_2.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_there_any_dead_ends_2.und[0]=''" value="" required />
+                    <label for="field_are_there_any_dead_ends_20">N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_are_there_any_dead_ends_2.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>On Re-Use CIP Systems Is The Rinse Tank The Furthest From The Supply Pump?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_on_re_use_cip_systems_is_t" type="radio" id="field_on_re_use_cip_systems_is_t1" ng-model="vm.data.cip_tools_checklist[0].field_on_re_use_cip_systems_is_t.und[0].value" value="0" required />
+                  <label for="field_on_re_use_cip_systems_is_t1">N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_on_re_use_cip_systems_is_t2" name="field_on_re_use_cip_systems_is_t" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_on_re_use_cip_systems_is_t.und[0].value" value="1" required />
+                  <label for="field_on_re_use_cip_systems_is_t2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_on_re_use_cip_systems_is_t" type="radio" id="field_on_re_use_cip_systems_is_t0" ng-model="vm.data.cip_tools_checklist[0].field_on_re_use_cip_systems_is_t.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_on_re_use_cip_systems_is_t.und[0]=''" value="" required />
+                    <label for="field_on_re_use_cip_systems_is_t0">N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_on_re_use_cip_systems_is_t.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Does Operator Effectively Conduct Chemical Titrations Using Test Kit?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_does_operator_effectively_" type="radio" id="field_does_operator_effectively_1" ng-model="vm.data.cip_tools_checklist[0].field_does_operator_effectively_.und[0].value" value="0" required />
+                  <label for="field_does_operator_effectively_1">N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_does_operator_effectively_2" name="field_does_operator_effectively_" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_does_operator_effectively_.und[0].value" value="1" required/>
+                  <label for="field_does_operator_effectively_2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_does_operator_effectively_" type="radio" id="field_does_operator_effectively_0" ng-model="vm.data.cip_tools_checklist[0].field_does_operator_effectively_.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_does_operator_effectively_.und[0]=''" value="" required />
+                    <label for="field_does_operator_effectively_0">N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_does_operator_effectively_.$error.required">Please Select An Option</div>
+              </div>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-col form-col-cip">
+              <label>Are The Wash Concentrations In Range For This Audited Wash?<span class="required-field">*</span></label>
+              </div>
+              <div class="form-col form-option-cip">
+              <div>
+                <div class="radio">
+                  <input name="field_are_the_wash_concentration" type="radio" id="field_are_the_wash_concentration1" ng-model="vm.data.cip_tools_checklist[0].field_are_the_wash_concentration.und[0].value" value="0" required />
+                  <label for="field_are_the_wash_concentration1">N</label>
+                </div>
+                <div class="radio">
+                  <input id="field_are_the_wash_concentration2" name="field_are_the_wash_concentration" type="radio" ng-model="vm.data.cip_tools_checklist[0].field_are_the_wash_concentration.und[0].value" value="1" required/>
+                  <label for="field_are_the_wash_concentration2">Y</label>
+                </div>
+                <div class="radio hidden">
+                    <input name="field_are_the_wash_concentration" type="radio" id="field_are_the_wash_concentration0" ng-model="vm.data.cip_tools_checklist[0].field_are_the_wash_concentration.und[0]" ng-init="vm.data.cip_tools_checklist[0].field_are_the_wash_concentration.und[0]=''" value="" required />
+                    <label for="field_are_the_wash_concentration0">N/A</label>
+                  </div>
+              </div>
+              <div class="validation-messages" ng-show="vm.showvalidationmsg">
+                <div ng-show="vm.cipform.group_cipspecificques.field_are_the_wash_concentration.$error.required">Please select an option</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-form>
+      <div class="accordion-footer padding">
+        <button class="btn btn-primary" auto-next type="submit" ng-click="vm.goNext(vm.cipform.group_costbasis,-1);"><span ng-show="vm.searchButtonText == 'Processing'"><i class="icon-spinner"></i></span>{{ vm.searchButtonText }}</button>
+      </div>
+    </accordion-item>
+    <button  class="pull-right btn btn-primary" ng-click="vm.save(vm.data);" ng-disabled="vm.data.checklist_basic_info.isFinalized"><span ng-show="vm.saveButtonText == 'Saving'"  ><i class="icon-spinner" ></i></span>{{ vm.saveButtonText }}</button>
+    <button ng-disabled="!isConnected||vm.data.checklist_basic_info.isFinalized" class="pull-right btn btn-primary button-space" ng-click="vm.submit(vm.data,vm.cipform)"><span ng-show="vm.submitButtonText == 'Submitting'"><i class="icon-spinner"></i></span>{{ vm.submitButtonText }}</button>
+  </form>
+</accordion>

@@ -1,0 +1,53 @@
+<form class="form-light aqua-wrapper accordion"  name="aquascan.form" novalidate>
+  <h3 class="aqua-wrapper-title"> Import From Aqua Scan</h3>
+  <div class="form-row-import-form padding">
+      <div class="flex-table table-row table-row-import">
+        <div class="">
+          <span class="import-align" for="Import">Report Id</span>
+        </div>
+        <div class="">
+          <input type="text" ng-model="aquascan.reportid" required name="reportid">
+        </div>
+        <div class="">
+          <button class="btn btn-primary" ng-click="vm.import(aquascan.reportid)" ng-disabled="aquascan.form.reportid.$error.required">Import</button>
+        </div>
+        <div class="">
+          <button class="btn btn-primary" ui-sref="layout.report({type:'checklist'})">Back</button>
+        </div>
+      </div>
+      <div class="flex-table">
+        <div class="validation-message column-3-1 flex-table-row">
+           <!--  <div ng-show="aquascan.form.$submitted && aquascan.form.required ">Errors: Invalid Report Id
+         </div> -->
+         <div class="text-capitalize" ng-show="!vm.listOfImportedReports.length">{{vm.message}}
+         </div>
+        </div>
+      </div>
+      <div class="flex-table-import">
+        <div class="flex-form-row-import-form" ng-if="vm.listOfImportedReports.length">
+          <p>This Aqua Scan Report has already been imported with the following Report Id</p>
+          <div class="padding-import flex-table">
+            <div class="flex-table-row">
+              <ul class="report-color">
+                <li ng-repeat="importedReport in vm.listOfImportedReports">
+                  <a ui-sref="layout.report({id:importedReport.nid,type:'checklist'})">{{importedReport.field_report_id}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex-table-content">
+            <div class="row" >
+              <div class="column column-12">
+                <p>Do you wish to proceed with the import for the Aqua Scan Report {{::aquascan.reportid}} ?</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column column-12">
+                <button class="btn btn-primary" ng-click="vm.continue(aquascan.reportid)">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</form>

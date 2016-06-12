@@ -1,0 +1,72 @@
+<div class="aqua-wrapper">
+  <h3 class="aqua-wrapper-title">Import CSV</h3>
+  <div class="accordion upload-container">
+    <form name="uploadcsv" id="uploadcsv" class="form" novalidate>
+      <div class="form-row no-margin">
+        <div class="form-col full-width">
+          <div class="file clearfix">
+            <span class="file-text" ng-bind="vm.filename"></span>
+            <div class="btn-group">
+              <input type="file"  accept=".csv" id="fileupload" name="field_csv_upload" ng-model="vm.csv_file" fileread="csv_file" required="true">
+              <!-- <input type="file" id="fileupload" ng-model="csv_file"> -->
+              <label ng-disabled="vm.checklist_info.isFinalized" for="fileupload" class="btn btn-primary"><i class="icon-plus"></i> select</label>
+              <input type="submit" id="submituploadfile" ng-click="vm.upload(csv_file)">
+              <label  ng-disabled="vm.checklist_info.isFinalized" class="btn btn-warning" for="submituploadfile"><i class="icon-upload"></i> upload</label>
+            </div>
+          </div>
+          <div class="validation-messages" ng-show="uploadcsv.$submitted">
+            <div ng-show="uploadcsv.field_csv_upload.$error.required && !uploadcsv.field_csv_upload.$error.type">Please Select a file</div>
+            <div ng-show="uploadcsv.field_csv_upload.$error.type">Please Select a CSV file</div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div ng-show="vm.isUploaded">
+      <div class="uploaded-content">
+        <div class="uploaded-item" ng-repeat="file in vm.files track by $index">
+          <span class="uploaded-item-text"><i class="icon-check-circle"></i>{{file.file_name}}</span>
+          <span class="pull-right">
+            <!-- <i class="icon-pencil-square-o edit"  ng-disabled="vm.checklist_info.isFinalized" ></i> -->
+            <i class="icon-times remove pointer"  ng-disabled="vm.checklist_info.isFinalized"  ng-click="vm.remove_csv(vm.files, $index)"></i>
+          </span>
+        </div>
+        <!-- <button class="btn btn-primary" ng-click="vm.show_axis_form(vm.arrangeAxis)">Select Axis</button> -->
+      </div>
+      <div class="pull-right upload-buttons">
+        <button class="btn btn-primary"  ng-click="vm.openRenameModal()">Label Columns</button>
+        <button class="btn btn-primary" ng-click="vm.open()">Compute Columns</button>
+      </div>
+      <div class="clearfix"></div>
+      <form name="selectaxis" >
+        <div class="form form-inline form-dark">
+          <div class="form-row">
+              <div class="form-col full-width">
+                <label for="csv-name">Runchart Title<span class="required-field">*</span></label>
+                <input type="text"  ng-readonly="vm.checklist_info.isFinalized"  id="csv-name" name="field_csv_title" placeholder="Runchart Title" ng-model="vm.csv_title" ng-required="true">
+                <div class="validation-messages">
+                  <span ng-show="selectaxis.field_csv_title.$error.required">Runchart Title Is Required</span>
+                </div>
+              </div>
+          </div>
+          <div class="form-row no-margin space-around">
+            <div class="form-item">
+                <div multi-checkbox="vm.left_axises" ng-model="vm.data.left_axis" label="Left Axis">
+                </div>
+            </div>
+            <div class="btn-icon-width btn-direction-group">
+              <button class="btn btn-primary" title="Move Right" ng-disabled="vm.checklist_info.isFinalized" ng-click="vm.addRightAxis(vm.data.left_axis)"><span class="btn-icon-position icon-chevron-circle-right"></span></button>
+              <button class="btn btn-primary" ng-disabled="vm.checklist_info.isFinalized" title="Move Left" ng-click="vm.addLeftAxis(vm.data.right_axis)"><span class="btn-icon-position icon-chevron-circle-left"></span></button>
+            </div>
+            <div class="form-item">
+                <div multi-checkbox="vm.right_axises" ng-model="vm.data.right_axis" label="Right Axis">
+                </div>
+            </div>
+          </div>
+        </div>
+    </form>
+    <div class="padding clearfix">
+      <button class="btn btn-primary pull-right" ng-disabled="selectaxis.field_csv_title.$error.required" ng-click="vm.save()">view runchart <span class="btn-icon-position icon-chevron-circle-right"></span></button>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h3 class="modal-title">Label Department and Application methods</h3>
+</div>
+<div class="modal-body">
+  <div class="padding flex-table flex-table-labels">
+    <div class="flex-table-header">
+      <div class="flex-table-row">
+        <h3 class="flex-table_header_title flex-table-col">Department</h3>
+        <h3 class="flex-table_header_title flex-table-col">Application Method</h3>
+        <h3 class="flex-table_header_title flex-table-col">Label</h3>
+      </div>
+    </div>
+    <form class="flex-table-content form form-light" name="form_apply_labels">
+      <div class="flex-table-row" ng-repeat="department in al.departments track by $index">
+        <div class="flex-table-col">
+            <div for="department-label-{{$index}}">{{::department.name}}</div>
+            <div class="column-6 form-item">
+              <input ng-model="al.terms[department.tid].label" type="text" id="department-label-{{$index}}" name="department-label-{{$index}}" required="true">
+            </div>
+        </div>
+        <div class="flex-table-col">
+          <div class="flex-table-inner-row flex-table-inner-row-inner-space" ng-repeat="app in department.children track by $index">{{::app.name}}</div>
+        </div>
+        <div class="flex-table-col">
+          <div class="flex-table-inner-row flex-table-inner-row-build" ng-repeat="app in department.children track by $index">
+            <div class="column-6">
+              <input ng-model="al.terms[app.tid].label" type="text" id="app-label-{{$index}}" name="app-label-{{$index}}" required="true">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <button ng-disabled="form_apply_labels.$error.required" class="btn btn-modal btn-full-width" ng-click="save(al.terms)">OK</button>
+</div>

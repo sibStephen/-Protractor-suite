@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h3 class="modal-title">Label Column</h3>
+</div>
+<div class="modal-body label-colummn">
+  <form class="form form-light" name="labelForm.csvLabel" novalidate>
+  <div class="form-row">
+      <div class="form-col label-col">
+       <h3 class="flex-modal"> CSV Column Name</h3>
+      </div>
+      <div class="form-col label-col">
+        <h3 class="flex-modal">Label</h3>
+      </div>
+      <div class="form-col form-center label-col">
+        <h3 class="flex-modal form-center">Pick Color</h3>
+      </div>
+    </div>
+    <div class="form-row" ng-repeat="label in labelForm.fileData.data">
+      <div class="form-col">
+        <span ng-bind="::label.originalName"></span>
+      </div>
+      <div class="form-col" disable-finalised>
+        <input required="" type="text" ng-model="label.name" name="newLabel{{$index}}">
+        <div class="validation-messages" ng-show="labelForm.csvLabel.$submitted">
+            <div ng-show="labelForm.csvLabel.newLabel{{$index}}.$invalid">Please Enter Report Date</div>
+          </div>
+      </div>
+      <div class="form-col">
+        <color-picker color-picker-disabled="labelForm.checklist_info.isFinalized" ng-model="label.color" color-picker-format="'hex'" color-picker-swatch-bootstrap="false" color-picker-swatch-only="true" color-picker-case="'lower'"></color-picker>
+      </div>
+
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button  ng-disabled="labelForm.checklist_info.isFinalized || labelForm.csvLabel.$invalid" class="btn btn-modal btn-full-width" ng-click="save(labelForm.csvLabel,labelForm.fileData)">OK</button>
+</div>
