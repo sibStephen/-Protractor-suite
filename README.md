@@ -12,6 +12,10 @@ In order to install protractor along with the Report library type the following 
 
 `npm install protractor-jasmine2-screenshot-reporte` (For Reports)
 
+`Need to update the web-driver manager because it's the back end server where in the request passes through the selenium driver
+Type the command below`
+
+`./node_modules/protractor/bin/webdriver-manager update`
 
 After which run `protractor conf.js` (From the base directory where conf.js file is kept).
 
