@@ -1,7 +1,7 @@
 var HtmlReporter = require('protractor-jasmine2-screenshot-reporter');
 
 var reporter = new HtmlReporter({
-  dest: '../protractor-reports',
+  dest: 'protractor-reports',
   filename: 'protractor-report.html'
 });
 
